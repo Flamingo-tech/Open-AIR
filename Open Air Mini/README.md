@@ -26,7 +26,21 @@ The Open Air Mini works with the following boxes:
  - Orcon MVS-15RH
  
  If your home ventilation motor supports the following connections (See image below) Then you can use the Open Air Mini
- ![image.png](https://www.flamingo-tech.nl/wp-content/uploads/2022/11/EBM.png)
+ ![image.png](https://www.flamingo-tech.nl/wp-content/uploads/2022/11/EBM2.png) 
+ 
+The following pins need to be available:
+
+230 Vac directly to the motor
+ - 1 Protective earth
+ - 2 Power Supply 230VAC 50-60Hz
+ - 3 Neutral conductor
+ 
+ Control cabeling:
+ - 4 GND (on ebmpapst motors BLUE)
+ - 5 Tach output (on ebmpapst motors WHITE)
+ - 6 10V Output (on ebmpapst motors RED)
+ - 7 0-10V PWM Input ((on ebmpapst motors YELLOW)
+ 
  
 
 # Important:
