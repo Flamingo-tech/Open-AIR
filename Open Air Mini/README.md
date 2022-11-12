@@ -24,6 +24,7 @@ The Open Air Mini works with the following boxes:
  - DucoBox Silent Connect
  - DucoBox Focus (Warning: Original Duco Valves are not supported!)
  - Orcon MVS-15RH
+ - and more (see schematic below)
  
  If your home ventilation motor supports the following connections (See image below) Then you can use the Open Air Mini
  ![image.png](https://www.flamingo-tech.nl/wp-content/uploads/2022/11/EBM2.png) 
