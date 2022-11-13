@@ -3,7 +3,7 @@
 # Open AIR Valve 3D Prints
  
  All valve 3D printed parts can be found at printables.\
- Please use recycled to print these parts. There is enough plastic in the oceans already.\
+ Please use recycled to print these parts. There is enough plastic in the oceans already.
  
  [Open AIR Valve TOP Housing](https://www.printables.com/model/316309-open-air-valve-top)\
  [Open AIR Valve BOTTOM Housing](https://www.printables.com/model/316305-open-air-valve-bottom)\
