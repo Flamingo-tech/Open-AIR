@@ -15,6 +15,7 @@ Open source system for home ventilation and control via HA
 |All in one Sensor         |✔️|V2.1| - | ❌ 
 |Programmer         |✔️|V1.0| - | ✔️ 
 |Open AIR Valve         |✔️|V1.2|- |❌
+|External Open AIR Valve         |❌|❌|- |❌
 |Open AIR Ventilation Box         |❌|❌|- |❌
 
 
