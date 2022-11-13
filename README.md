@@ -26,7 +26,7 @@ The Open AIR Valve is a open source valve that works with the following ventilat
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
 - DucoBox Silent Connect
-- DucoBox Focus (Warning: Original Duco Valves are not supported!)
+- DucoBox Focus (Warning: Original Duco Valves are not supported!)\
 In the future an external housing will be made for the Open AIR Valves. This can then be installed next to any ventilation box.
 
 For more information about the Open AIR Valve see: [Open AIR Valve](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20AIR%20Valve) 
