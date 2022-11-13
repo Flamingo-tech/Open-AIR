@@ -8,7 +8,7 @@ Open source system for home ventilation and control via HA
 
 |   Part:         |Done:	                         |Version:                       |Duco Part Number|Backwards compatible|
 |----------------|-------------------------------|-----------------------------|-----------------------------|-----------------------------|
-|Open Duco mini|✔️         |V1.1          | -|✔️ 
+|Open AIR mini|✔️         |V1.2          | -|✔️ 
 |Open Duco Pro         |❌|-|- |
 |Moisture Sensor        |✔️            |V2.0        | 0000-4218 | ✔️|
 |Co2 Sensor         |✔️|V2.1| 0000-4216 | ✔️
