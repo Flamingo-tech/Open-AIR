@@ -1,5 +1,5 @@
 # Open_Air
-Open source system for home ventilation and control via Home Assistant. The goal of this project is to create an eco system of open source Home Assistant compatible devices that can be installed in a wide variaty of ventilation devices. 
+Open AIR is an open source system for home ventilation and control via Home Assistant. The goal of this project is to create an eco system of open source Home Assistant compatible devices that can be installed in a wide variaty of ventilation devices. 
 
 The Open AIR system must be able to do the following:
  - Measure Humidity in an air duct.
