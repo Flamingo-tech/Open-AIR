@@ -20,6 +20,6 @@ Open source system for home ventilation and control via HA
 
 # Special thanks:
 [@thomasvnl](https://github.com/thomasvnl) For writing the Valve firmware and valuable feedback.\
-[@Septillion](https://github.com/septillion-git) Thanks for providing valuable feedback.3\
+[@Septillion](https://github.com/septillion-git) Thanks for providing valuable feedback.\
 [@KristofRobberechts ](https://github.com/KristofRobberechts) For providing a beautiful valve design!
 
