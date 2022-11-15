@@ -10,7 +10,7 @@ The Open AIR system must be able to do the following:
  - Be fully controllable by Home Assistant out of the box
  - Comply to open-source standards
 
-The long term goal for this project is create a completely open-source venilation box which can be 3D printed (preferrably out of recycled plastic).
+The long-term goal for this project is create a completely open-source venilation box which can be 3D printed (preferrably out of recycled plastic).
 
 #### Open AIR Mini:
 The Open AIR Mini is an open-source controller that works with at least the following ventilation boxes:
