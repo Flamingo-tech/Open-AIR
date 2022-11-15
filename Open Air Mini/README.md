@@ -1,4 +1,4 @@
-# Open Air Mini
+# Open AIR Mini
 Opensource firmware and hardware for home ventilation boxes
 
 
