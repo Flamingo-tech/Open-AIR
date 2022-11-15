@@ -13,7 +13,7 @@ The Open AIR ecosystem must be able to do the following:
 The long-term goal for this project is create a completely open-source venilation box which can be 3D printed (preferably out of recycled plastics).
 
 #### Open AIR Mini:
-The Open AIR Mini is an open-source controller that works with at least the following ventilation boxes:
+The Open AIR Mini is an open-source ventilation controller that works with at least the following ventilation boxes:
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
 - DucoBox Silent Connect
