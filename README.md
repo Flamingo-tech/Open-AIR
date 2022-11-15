@@ -1,24 +1,25 @@
 # Open_Air
-Open AIR is an open source system for home ventilation and control via Home Assistant. The goal of this project is to create an eco system of open source Home Assistant compatible devices that can be installed in a wide variaty of ventilation devices. 
+
+Open AIR is an open source system for home ventilation and control via Home Assistant. The goal of this project is to create an eco system of Open Source and Home Assistant compatible devices that can be installed in a wide variaty of ventilation devices.
 
 The Open AIR system must be able to do the following:
- - Measure Humidity in an air duct.
- - Measure Co2 in an air duct.
- - Measure Temperature in an air duct.
- - Wifi enabled by default
- - Fully controllable by Home assistant
- - Open source
+ - Measure huidity in an air duct.
+ - Measure CO2 in an air duct
+ - Measure tmperature in an air duct
+ - Be WiFi enabled by default
+ - Be fully controllable by Home Assistant out of the box
+ - Be Open Source
 
-The long term goal is to creat a completely open source and 3D printed (orcourse recycled plastic) ventilation box.
+The long term goal for this project is create a completely Open Source venilation box which can be 3D printed (preferrably out of recycled plastic).
 
 #### Open AIR Mini:
-The Open AIR Mini is an open source controller that works with the following ventilation boxes:
+The Open AIR Mini is an Open Source controller that works with at least the following ventilation boxes:
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
 - DucoBox Silent Connect
-- DucoBox Focus (Warning: Original Duco Valves are not supported!)
+- DucoBox Focus (⚠ Warning: Original Duco Valves are not supported! ⚠)
 - Orcon MVS-15RH
-and more...\
+
 For more information about the Open AIR Mini see: [Open AIR Mini](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20Air%20Mini) 
 
 #### Open AIR Valve:
@@ -26,8 +27,9 @@ The Open AIR Valve is a open source valve that works with the following ventilat
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
 - DucoBox Silent Connect
-- DucoBox Focus (Warning: Original Duco Valves are not supported!)\
-In the future an external housing will be made for the Open AIR Valves. This can then be installed next to any ventilation box.
+- DucoBox Focus (⚠ Warning: Original Duco Valves are not supported! ⚠)
+
+In the future an external housing will be made for the Open AIR Valves. This can then be installed next to any ventilation box, between it and the air duct.
 
 For more information about the Open AIR Valve see: [Open AIR Valve](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20AIR%20Valve) 
 
@@ -39,11 +41,11 @@ For more information about the Open AIR Valve see: [Open AIR Valve](https://gith
 
 |   Part:         |Done:	                         |Version:                       |Duco Part Number|Backwards compatible|
 |----------------|-------------------------------|-----------------------------|-----------------------------|-----------------------------|
-|Open AIR mini|✔️         |V1.2          | -|✔️ 
+|Open AIR Mini|✔️         |V1.2          | -|✔️ 
 |Open AIR Pro         |❌|-|- |
 |Moisture Sensor        |✔️            |V2.0        | 0000-4218 | ✔️|
-|Co2 Sensor         |✔️|V2.1| 0000-4216 | ✔️
-|All in one Sensor         |✔️|V2.1| - | ❌ 
+|CO2 Sensor         |✔️|V2.1| 0000-4216 | ✔️
+|All-In-One Sensor         |✔️|V2.1| - | ❌ 
 |Programmer         |✔️|V1.0| - | ✔️ 
 |Open AIR Valve         |✔️|V1.2|- |❌
 |External Open AIR Valve         |❌|❌|- |❌
@@ -51,7 +53,7 @@ For more information about the Open AIR Valve see: [Open AIR Valve](https://gith
 
 # Backwards Compatibility
 
-If this is the awnser to this is yes, you can use the sensor in the original Duco Silent ventilation box.
+If the table above has a checkmark, then you can use the device in the original Duco Silent ventilaton box.
 
 
 # Special thanks:
