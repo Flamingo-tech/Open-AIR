@@ -45,7 +45,7 @@ The following pins need to be available:
  
  
 
-# Important:
-This project is not supported by Duco and Orcon, nor is there any affiliation with and/or (technical) support from these companies. 
+# ⚠ Important:
+This project is not supported by Duco and Orcon, nor is there any affiliation with and/or (technical) support from these companies. When you modify your ventilation box, you are doing so of your own volition and at your own risk.
 
 
