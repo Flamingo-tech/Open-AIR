@@ -53,7 +53,7 @@ For more information about the Open AIR Valve see: [Open AIR Valve](https://gith
 
 # Backwards Compatibility
 
-If the table above has a checkmark, then you can use the device in the original Duco Silent ventilaton box.
+If the table above has a checkmark in the `Backwards compatible` column, then you can use the device in the original Duco Silent ventilaton box.
 
 
 # Special thanks:
