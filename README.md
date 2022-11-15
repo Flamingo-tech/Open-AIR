@@ -1,6 +1,6 @@
 # Open AIR
 
-Open AIR is an Open Source system for home ventilation and control via Home Assistant. The goal of this project is to create an eco system of these Home Assistant compatible devices that can be installed in a wide variaty of of-the-shelf ventilation boxes/devices so you can incorporate them into your own smart home system.
+Open AIR is an open-source system for home ventilation and control via Home Assistant. The goal of this project is to create an eco system of these Home Assistant compatible devices that can be installed in a wide variaty of of-the-shelf ventilation boxes/devices so you can incorporate them into your own smart home system.
 
 The Open AIR system must be able to do the following:
  - Measure huidity in an air duct.
@@ -8,12 +8,12 @@ The Open AIR system must be able to do the following:
  - Measure tmperature in an air duct
  - Be WiFi enabled by default
  - Be fully controllable by Home Assistant out of the box
- - Be Open Source
+ - Comply to open-source standards
 
-The long term goal for this project is create a completely Open Source venilation box which can be 3D printed (preferrably out of recycled plastic).
+The long term goal for this project is create a completely open-source venilation box which can be 3D printed (preferrably out of recycled plastic).
 
 #### Open AIR Mini:
-The Open AIR Mini is an Open Source controller that works with at least the following ventilation boxes:
+The Open AIR Mini is an open-source controller that works with at least the following ventilation boxes:
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
 - DucoBox Silent Connect
@@ -23,7 +23,7 @@ The Open AIR Mini is an Open Source controller that works with at least the foll
 For more information about the Open AIR Mini see: [Open AIR Mini](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20Air%20Mini) 
 
 #### Open AIR Valve:
-The Open AIR Valve is a open source valve that works with the following ventilation boxes
+The Open AIR Valve is an open-source valve that works with the following ventilation boxes
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
 - DucoBox Silent Connect
