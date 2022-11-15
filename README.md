@@ -23,7 +23,7 @@ The Open AIR Mini is an open-source ventilation controller that works with at le
 For more information about the Open AIR Mini see: [Open AIR Mini](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20Air%20Mini) 
 
 #### Open AIR Valve:
-The Open AIR Valve is an open-source valve that works with the following ventilation boxes
+The Open AIR Valve is an open-source valve that works with the following ventilation boxes:
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
 - DucoBox Silent Connect
