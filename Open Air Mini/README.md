@@ -11,7 +11,7 @@ Goals of the project:
  - Must work with different home ventilation boxes.
 
 
-# Open Duco Mini
+# The Hardware
 ![image.png](https://flamingo-tech.nl/wp-content/uploads/2021/11/image-5-1024x642.png)
  - Support for two sensors on the main board itself.
  - Wifi Support.
@@ -46,6 +46,6 @@ The following pins need to be available:
  
 
 # Important:
-This project is not supported by Duco and or Orcon the company nor is there any affiliation with these companies. 
+This project is not supported by Duco and Orcon, nor is there any affiliation with and/or (technical) support from these companies. 
 
 
