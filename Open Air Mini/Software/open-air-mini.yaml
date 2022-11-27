@@ -24,7 +24,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Open-AIR-Mini Fallback"
-    password: "ChangeMe@123!" Of "ChangeMe1234'
+    password: "ChangeMe@123!"
 
 captive_portal:
 
@@ -65,7 +65,7 @@ output:
   - platform: ledc
     pin: GPIO15
     inverted: true
-    id: open_duco
+    id: open_air_mini
 
 fan:
   - platform: speed
