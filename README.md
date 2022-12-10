@@ -13,6 +13,10 @@ The Open AIR ecosystem must be able to do the following:
 The long-term goal for this project is create a completely open-source venilation box which can be 3D printed (preferably out of recycled plastics).
 
 #### Open AIR Mini:
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/image-5-1568x983.png?raw=true"/>
+</p>
+
 The Open AIR Mini is an open-source ventilation controller that works with at least the following ventilation boxes:
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
@@ -21,11 +25,17 @@ The Open AIR Mini is an open-source ventilation controller that works with at le
 - Orcon MVS-15RH
 
 Example intergration in HA:
- ![image.webp](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/BJEXNSvmAE3wAsKvwCHGmWnx.webp) 
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/BJEXNSvmAE3wAsKvwCHGmWnx.webp"/>
+</p>
 
 For more information about the Open AIR Mini see: [Open AIR Mini](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20Air%20Mini) 
 
 #### Open AIR Valve:
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Valve/Hardware/AIR-Valve.jpeg?raw=true"/>
+</p>
+
 The Open AIR Valve is an open-source valve that works with the following ventilation boxes:
 - DucoBox Silent Standard
 - DucoBox Silent Perilex
@@ -33,7 +43,10 @@ The Open AIR Valve is an open-source valve that works with the following ventila
 - DucoBox Focus (⚠ Warning: Original Duco Valves are not supported! ⚠)
 
 Example intergration in HA:
- ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Valve/Hardware/cMMb3mzwEilepQ762TXY6zFK.png?raw=true)
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Valve/Hardware/cMMb3mzwEilepQ762TXY6zFK.png?raw=true"/>
+</p>
+
 
 In the future an external housing will be made for the Open AIR Valves. This can then be installed next to any ventilation box, between it and the air duct.
 
