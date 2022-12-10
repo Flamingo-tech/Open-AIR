@@ -15,8 +15,11 @@
  
  
  This foam has the following dimensions:
+ 
  Length: 15CM
+ 
  Width: 12CM
+ 
  Thickness: 4CM
  
  Used foam: SG120
