@@ -20,6 +20,9 @@ The Open AIR Mini is an open-source ventilation controller that works with at le
 - DucoBox Focus (⚠ Warning: Original Duco Valves are not supported! ⚠)
 - Orcon MVS-15RH
 
+Example intergration in HA:
+ ![image.webp](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/BJEXNSvmAE3wAsKvwCHGmWnx.webp) 
+
 For more information about the Open AIR Mini see: [Open AIR Mini](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20Air%20Mini) 
 
 #### Open AIR Valve:
