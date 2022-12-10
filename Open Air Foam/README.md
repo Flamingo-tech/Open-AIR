@@ -16,12 +16,9 @@
  
  This foam has the following dimensions:
  
- Length: 15CM
- 
- Width: 12CM
- 
- Thickness: 4CM
- 
+ Length: 15CM\
+ Width: 12CM\
+ Thickness: 4CM\
  Used foam: SG120
  
- You can buy it precut to the above size here : [Schuimwinke](https://www.schuimwinkel.nl/polypress-sg-120-op-maat.html) 
+ You can buy it precut to the above size here : [Schuimwinkel](https://www.schuimwinkel.nl/polypress-sg-120-op-maat.html) 
