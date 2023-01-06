@@ -4,6 +4,37 @@ Visit https://esphome.io/ for instructions on how to deploy this firmware.
 
 More documentation might come available in future updates. Make sure to copy `example.secrets.yaml` to `secrets.yaml` and fill it with your own wifi credentials.
 
+### Sensor 1/2
+Depending on what sensor is connected to what connector you need to declare the uart/I2C bus
+```
+#choose between:
+uart_id: uart_sensor_1 //used for Co2 Sensor only
+uart_id: uart_sensor_2 //used for Co2 Sensor only
+
+and/or:
+i2c_id: i2c_sensor_1 //used for RH Sensor only
+i2c_id: i2c_sensor_2 //used for RH Sensor only
+```
+Example:
+```
+sensor:
+  - platform: sht3xd
+    i2c_id: i2c_sensor_1
+    temperature:
+      name: "Temperature Open AIR Mini x"
+    humidity:
+      name: "Humidity Open AIR Mini x"
+    address: 0x44
+    update_interval: 60s
+
+#or
+sensor:
+  - platform: senseair
+    i2c_id: i2c_sensor_1
+    co2:
+      name: "Co2 Open AIR Mini x"
+    update_interval: 60s
+```
 
 ### Sensor Support: SHT-31
 
