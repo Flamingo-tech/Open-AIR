@@ -30,7 +30,7 @@ sensor:
 #or
 sensor:
   - platform: senseair
-    i2c_id: i2c_sensor_1
+    uart_id: uart_sensor_1
     co2:
       name: "Co2 Open AIR Mini x"
     update_interval: 60s
