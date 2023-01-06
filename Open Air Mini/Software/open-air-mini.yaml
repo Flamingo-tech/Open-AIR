@@ -71,3 +71,9 @@ fan:
   - platform: speed
     output: open_air_mini
     name: "Open AIR Mini"
+    
+sensor: 
+  - platform: pulse_counter
+    pin: GPIO14
+    unit_of_measurement: 'RPM'
+    name: 'AIR Mini RPM'
