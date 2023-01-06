@@ -74,6 +74,7 @@ If you have a combination sensor add the following to the bottom of `open-air-mi
 ```
 sensor:
   - platform: sht3xd
+    #add sensor I2C bus here
     temperature:
       name: "Temperature Open AIR Mini x"
     humidity:
@@ -81,6 +82,7 @@ sensor:
     address: 0x44
     update_interval: 60s
   - platform: senseair
+    #add sensor UART bus here
     co2:
       name: "Co2 Open AIR Mini x"
     update_interval: 60s
