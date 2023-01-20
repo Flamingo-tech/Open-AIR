@@ -5,7 +5,7 @@ Visit https://esphome.io/ for instructions on how to deploy this firmware.
 More documentation might come available in future updates. Make sure to copy `example.secrets.yaml` to `secrets.yaml` and fill it with your own wifi credentials.
 
 ### Sensor 1/2
-Depending on what sensor is connected to what connector you need to declare the uart/I2C bus
+Depending on what sensor is connected to what connector you need to declare the uart/I2C bus.
 ```
 #choose between:
 uart_id: uart_sensor_1 //used for Co2 Sensor only
