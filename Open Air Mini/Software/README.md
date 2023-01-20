@@ -19,7 +19,7 @@ Example:
 ```
 sensor:
   - platform: sht3xd
-    i2c_id: i2c_sensor_1 // or i2c_sensor_2 
+    #add sensor I2C bus here
     temperature:
       name: "Temperature Open AIR Mini x"
     humidity:
@@ -30,7 +30,7 @@ sensor:
 #or
 sensor:
   - platform: senseair
-    uart_id: uart_sensor_1 // or i2c_sensor_2 
+    #add sensor UART bus here
     co2:
       name: "Co2 Open AIR Mini x"
     update_interval: 60s
