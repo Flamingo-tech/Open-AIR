@@ -19,7 +19,7 @@ Example:
 ```
 sensor:
   - platform: sht3xd
-    i2c_id: i2c_sensor_1
+    i2c_id: i2c_sensor_1 // or i2c_sensor_2 
     temperature:
       name: "Temperature Open AIR Mini x"
     humidity:
@@ -30,7 +30,7 @@ sensor:
 #or
 sensor:
   - platform: senseair
-    uart_id: uart_sensor_1
+    uart_id: uart_sensor_1 // or i2c_sensor_2 
     co2:
       name: "Co2 Open AIR Mini x"
     update_interval: 60s
@@ -45,6 +45,7 @@ If you want to add a SHT-31 moisture & Temperature sensor to the Open AIR Mini. 
 ```
 sensor:
   - platform: sht3xd
+  #add sensor I2C bus here
     temperature:
       name: "Temperature Open AIR Mini x"
     humidity:
@@ -62,6 +63,7 @@ If you want to add a Senseair S8 Co2 sensor to the Open AIR Mini. Add the follow
 ```
 sensor:
   - platform: senseair
+  #add sensor I2C bus here
     co2:
       name: "Co2 Open AIR Mini x"
     update_interval: 60s
