@@ -91,6 +91,7 @@ sensor:
 ```
 
 ### SHT-20 Sensor
+! Warning ! the original Duco sensor can only be connected on sensor connector 1!
 
 If you have a SHT-20 Sensor add the following code at the bottom of `open-air-Mini.yaml` 
 
