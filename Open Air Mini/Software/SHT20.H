@@ -1,31 +1,3 @@
-
-Skip to content
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
-@Flamingo-tech
-thomasvnl /
-esphome-open-air-valve
-Public
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-
-    Insights
-
-esphome-open-air-valve/SHT20.H
-The Flamingo added support for SHT-20
-Latest commit 04e7fca Nov 18, 2022
-History
-0 contributors
-executable file 39 lines (32 sloc) 1.22 KB
 #include "esphome.h"
 #include "uFire_SHT20.h"
 
@@ -64,22 +36,4 @@ class SHT20 : public PollingComponent {
     float dew_point = sht20.dew_point();
     dew_point_sensor->publish_state(dew_point);
   }
-};
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-thomasvnl/esphome-open-air-valve: Firmware for the Open AIR Valve by The Flamingo
-esphome-open-air-valve/SHT20.H at main · thomasvnl/esphome-open-air-valve
+}
