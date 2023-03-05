@@ -36,4 +36,4 @@ class SHT20 : public PollingComponent {
     float dew_point = sht20.dew_point();
     dew_point_sensor->publish_state(dew_point);
   }
-}
+};
