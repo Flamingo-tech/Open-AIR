@@ -28,6 +28,35 @@ wifi:
 
 captive_portal:
 
+globals:
+  # Disconnected Mode Max Fan Speed, linked to Disconnected Hum Level Max Speed
+  - id: disconnected_max_fan_speed
+    type: int
+    restore_value: no
+    initial_value: "100"
+  # Disconnected Mode Medium Fan Speed, linked to Disconnected Hum Level Medium Speed
+  - id: disconnected_medium_fan_speed
+    type: int
+    restore_value: no
+    initial_value: "60"
+  # Disconnected Mode Default Fan Speed, for humidities lower than Disconnected Hum Level Medium Speed
+  # or if NOT using a humidity sensor. Without sensor this speed will be maintained untill a connection
+  # to Home Assistant has been restored and your automations can take over.
+  - id: disconnected_default_fan_speed
+    type: int
+    restore_value: no
+    initial_value: "25"
+  # Disconnected Mode Max Fan Speed Threshold    
+  - id: disconnected_hum_level_max_speed
+    type: int
+    restore_value: no
+    initial_value: "75"
+  # Disconnected Mode Medium Fan Speed Threshold
+  - id: disconnected_hum_level_medium_speed
+    type: int
+    restore_value: no
+    initial_value: "55"
+
 #
 uart:
 #UART For Sensor 1
@@ -71,9 +100,30 @@ fan:
   - platform: speed
     output: open_air_mini
     name: "Open AIR Mini"
+    id: fan_motor
     
 sensor: 
   - platform: pulse_counter
     pin: GPIO14
     unit_of_measurement: 'RPM'
     name: 'AIR Mini RPM'
+
+script:
+  # Below includes for disconnected mode are mutually exclusive. Only use one at a time!
+  !include disconnected-mode-without-humidity.yaml
+  # !include disconnected-mode-with-humidity.yaml
+
+interval:
+  - interval: 30s
+    then:
+      - logger.log: "API Connectivity Check for Disconnected Mode"
+      - if:
+          condition:
+            not:
+              api.connected:
+          then:
+            - logger.log: "API disconnected"
+            - script.execute: disconnected_mode
+          else:
+            - logger.log: "API connected"
+            - script.stop: disconnected_mode
