@@ -12,7 +12,7 @@ Goals of the project:
 
 
 # The Hardware
-![image.png](https://flamingo-tech.nl/wp-content/uploads/2021/11/image-5-1024x642.png)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/Pictures/Open_AIR_Mini_V1.3.0.jpg?raw=true)
  - Support for two sensors on the main board itself.
  - Wifi Support.
  - Home assistant integration via ESPhome interface.
