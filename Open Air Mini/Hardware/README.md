@@ -15,4 +15,4 @@ Each release includes the following files:
 
 We hope you find these files helpful in your project development process. Please feel free to contact us if you have any questions or feedback.
 
-Current version of the AIR mini PCBA is V1.3.0
+Current version of the AIR mini PCBA is V1.3.0 (V1.3.1 is already released on GIT the only difference is the Sensor 2 marking that was added in V1.3.1)
