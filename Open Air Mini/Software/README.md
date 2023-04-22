@@ -54,7 +54,7 @@ The following sensors are supported right away, either via ESPHome or via a cust
 1. [SHT-31](#sensor-support-sht-31)
 1. [Senseair S8](#sensor-support-senseair-s8)
 1. [SHT-20](#sensor-support-sht-20)
-1. [SHT-20](#Using-the-Combination-Sensor-with-Senseair-S8-&-SHT-31-on-the-same-board)
+1. [SHT-31 & Senseair S8 Combination Sensor](#Using-the-Combination-Sensor-with-Senseair-S8-&-SHT-31-on-the-same-board)
 
 ### Sensor Support: SHT-31
 
