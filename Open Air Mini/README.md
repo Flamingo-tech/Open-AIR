@@ -10,6 +10,7 @@ The Open AIR Mini hardware supports two sensors on the main board, Wi-Fi connect
 
 ### Status LEDS
  ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/Pictures/Open_AIR_Mini_LEDS.png?raw=true)
+ 
 The status LEDs of the Open AIR Mini from version V1.3.0 and above include five LEDs. The first LED (AC/DC) indicates the status of the Meanwell AC-> DC Converter, and if it is off, the device has no 230VAC power. The second and third LEDs (Sense LED and Sense LED 2) indicate the 5V and 3.3V sensor power, respectively. The fourth LED (ESP32 LED) indicates the 3.3V power supply for the ESP32, and the fifth LED (Motor) indicates the 10V output from the motor. All LEDs should be on in normal operation. 
 
 The ESP32 has a status LED located under it, which displays three different statuses. It blinks slowly (about every second) when a warning is active, blinks quickly (multiple times per second) when an error is active, and stays off otherwise.
