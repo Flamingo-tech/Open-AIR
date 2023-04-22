@@ -4,7 +4,7 @@ The Open AIR Programmer is an open-source programmer that is compatible with all
 Additionally, the programmer can be used to program the original Duco Ventilation boxes. To do this, you will need to download the Duco Network tool provided by Duco.
 
 ## The Hardware
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/Pictures/Open_AIR_Mini_V1.3.0.jpg?raw=true)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Programmer/Hardware/Pictures/Open_AIR_Programmer_V1.1.0.png?raw=true)
 The Open AIR Programmer uses a CP2102 chip. To install the drivers for this chip, please click [Here](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20AIR%20Programmer/Software) or : [Here](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)
 The Open AIR Programmer uses a standard USB-C cable to connect to the device. For more information about the pinout of the connector, please check the schematic files.
 
