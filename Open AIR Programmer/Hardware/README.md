@@ -1,18 +1,18 @@
-# Open AIR Programmer
+# Open AIR Programmer Source Files
+Welcome to the Open AIR Programmer source files repository! This is where you can find all the necessary files for each release of Open AIR Programmer.
 
-The Open AIR Programmer is an open-source programmer that is compatible with all Open AIR devices, including Open AIR Mini, Open AIR Valve, and Open AIR Sense.
-Additionally, the programmer can be used to program the original Duco Ventilation boxes. To do this, you will need to download the Duco Network tool provided by Duco.
+Each release includes the following files:
 
-## The Hardware
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Programmer/Hardware/Pictures/Open_AIR_Programmer_V1.1.0.png?raw=true)
-The Open AIR Programmer uses a CP2102 chip. To install the drivers for this chip, please click [Here](https://github.com/Flamingo-tech/Open-AIR/tree/main/Open%20AIR%20Programmer/Software) or [Here](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)
-The Open AIR Programmer uses a standard USB-C cable to connect to the device. For more information about the pinout of the connector, please check the schematic files.
+**Assy Drawing:** text This file contains essential information about the PCBA layer stack, fabrication details, the size of the PCBA, component designators and their locations, as well as a 3D view of the part.
 
+**Schematic Drawing:** This file provides the schematic of the PCBA, giving an overview of the circuit's connections.
 
-### Status LEDs
-The Open AIR Programmer has three status LEDs: one for active transmit, one for active receive, and a 5V power LED. During normal operation, the 5V LED should be on. When there is a transmit or receive, the TX or RX LED should blink.
+**B.O.M File:** This file lists all the parts with their respective MPNs (manufacturer part numbers) and manufacturers, organized by designator.
 
+**Gerber Files:** These files are used to order the bare PCBA's, allowing for accurate production of the circuit boards.
 
-# ⚠ Important
+**Step File:** This file contains a 3D model of the PCBA, which can be used for visualization and design purposes.
 
-Please note that this project is not supported by Duco and Orcon, and there is no affiliation or technical support from these companies. Modifying your ventilation box is done at your own risk.
+We hope you find these files helpful in your project development process. Please feel free to contact us if you have any questions or feedback.
+
+Current version of the AIR Programmer PCBA is V1.1.0
