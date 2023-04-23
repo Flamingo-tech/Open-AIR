@@ -4,12 +4,12 @@ Open AIR is an open-source solution for home ventilation and management through 
 
 The OpenAIR ecosystem is designed to offer the following capabilities:
 
-    Humidity measurement within air ducts
-    CO2 level detection in air ducts
-    Temperature monitoring inside air ducts
-    Default Wi-Fi connectivity
-    Full compatibility and control with Home Assistant out of the box
-    Adherence to open-source principles
+* Humidity measurement within air ducts
+* CO2 level detection in air ducts
+* Temperature monitoring inside air ducts
+* Default Wi-Fi connectivity
+* Full compatibility and control with Home Assistant out of the box
+* Adherence to open-source principles
 
 The long-term vision for this project is to create a fully open-source ventilation system that can be 3D printed, preferably using recycled plastics as the primary material.
 
@@ -20,11 +20,11 @@ The long-term vision for this project is to create a fully open-source ventilati
 
 The OpenAIR Mini is a versatile, open-source ventilation controller designed to be compatible with a range of popular ventilation units, including but not limited to:
 
-    DucoBox Silent Standard
-    DucoBox Silent Perilex
-    DucoBox Silent Connect
-    DucoBox Focus (⚠ Note: Original Duco Valves are not supported! ⚠)
-    Orcon MVS-15RH
+* DucoBox Silent Standard
+* DucoBox Silent Perilex
+* DucoBox Silent Connect
+* DucoBox Focus (⚠ Note: Original Duco Valves are not supported! ⚠)
+* Orcon MVS-15RH
     
 Example intergration in HA:
 <p align="center">
