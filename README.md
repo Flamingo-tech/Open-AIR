@@ -40,10 +40,10 @@ For more information about the Open AIR Mini see: [Open AIR Mini](https://github
 
 The OpenAIR Valve is an open-source ventilation valve designed for compatibility with a selection of prominent ventilation units, including:
 
-    DucoBox Silent Standard
-    DucoBox Silent Perilex
-    DucoBox Silent Connect
-    DucoBox Focus (⚠ Note: Original Duco Valves are not supported! ⚠)
+* DucoBox Silent Standard
+* DucoBox Silent Perilex
+* DucoBox Silent Connect
+* DucoBox Focus (⚠ Note: Original Duco Valves are not supported! ⚠)
 
 Example intergration in HA:
 <p align="center">
@@ -81,4 +81,5 @@ If there is a checkmark in the 'Backwards Compatible' column of the table above,
 [@thomasvnl](https://github.com/thomasvnl) For writing the Valve firmware and valuable feedback.\
 [@Septillion](https://github.com/septillion-git) Thanks for providing valuable feedback.\
 [@KristofRobberechts ](https://github.com/KristofRobberechts) For providing a beautiful valve design!
+
 D.Smith For the first version of the installation manual
