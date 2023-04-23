@@ -38,12 +38,7 @@ For more information about the Open AIR Mini see: [Open AIR Mini](https://github
   <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Valve/Hardware/Pictures/Installed_Valves_Example.png?raw=true"/>
 </p>
 
-The OpenAIR Valve is an open-source ventilation valve designed for compatibility with a selection of prominent ventilation units, including:
-
-* DucoBox Silent Standard
-* DucoBox Silent Perilex
-* DucoBox Silent Connect
-* DucoBox Focus (⚠ Note: Original Duco Valves are not supported! ⚠)
+The Open AIR Valve is an open-source valve designed to work with several Duco ventilation boxes, including the DucoBox Silent Standard, DucoBox Silent Perilex, DucoBox Silent Connect, and DucoBox Focus (Note: Original Duco Valves are not supported). It can be fully controlled from Home Assistant, allowing you to set any value between 0-100% open or closed. Additionally, the valve can be connected to one sensor. 
 
 Example intergration in HA:
 <p align="center">
