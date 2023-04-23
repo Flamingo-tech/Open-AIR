@@ -79,4 +79,4 @@ If the table above has a checkmark in the `Backwards compatible` column, then yo
 [@thomasvnl](https://github.com/thomasvnl) For writing the Valve firmware and valuable feedback.\
 [@Septillion](https://github.com/septillion-git) Thanks for providing valuable feedback.\
 [@KristofRobberechts ](https://github.com/KristofRobberechts) For providing a beautiful valve design!
-
+D.Smith For the first version of the installation manual
