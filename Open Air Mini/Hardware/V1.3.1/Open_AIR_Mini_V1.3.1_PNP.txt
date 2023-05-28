@@ -1,15 +1,3 @@
-Altium Designer Pick and Place Locations
-C:\Users\Public\Documents\Altium\Private_Open_Duco_Controller\Project Outputs for Private_Open_AIR_Controller\Pick Place for Open_AIR_Mini.txt
-
-========================================================================================================================
-File Design Information:
-
-Date:       28-05-23
-Time:       09:47
-Revision:   947127b7a132fd3f314f338129626276236ec805
-Variant:    No variations
-Units used: mm
-
 Designator Comment                  Layer    Footprint                      Center-X(mm) Center-Y(mm) Rotation Description                                                                                                                            
 R17        ERJ-2RKF2201X            TopLayer SMD-0402-RES                   64,2750      6,2000       270      "RES SMD 2.2kO 1% 100mW 100PPM 0402"                                                                                                   
 F2         1206L050/24WR            TopLayer 1206_F                         64,2249      4,5501       0        "Resettable fuse 0.5A/24V"                                                                                                             
@@ -20,12 +8,12 @@ FID3       FID                      TopLayer FID_1MM                        30,8
 FID2       FID                      TopLayer FID_1MM                        91,1000      72,4000      0        Fiducial                                                                                                                               
 FID1       FID                      TopLayer FID_1MM                        2,4000       72,6000      0        Fiducial                                                                                                                               
 U4         AP2112K-3.3TRG1          TopLayer SOT23-5                        72,1540      15,5000      180      "IC REG LDO 3.3V 0.6A SOT25"                                                                                                           
-R16        ERJ-2RKF1001X            TopLayer SMD-0402-RES                   74,0000      12,9500      270      "RES SMT 1kO 1% 100mW 100ppm/°C 0402"                                                                                                  
+R16        ERJ-2RKF1001X            TopLayer SMD-0402-RES                   74,0000      12,9500      270      "RES SMT 1kO 1% 100mW 100ppm/Â°C 0402"                                                                                                  
 R14        CRCW040210K0FKED         TopLayer SMD-0402-RES                   71,2000      18,2000      180      "RES SMD 10kO 1% 62.5mW 100PPM 0402"                                                                                                   
 D5         150040GS73240            TopLayer SMD-0402-LED-0.4H              75,4750      11,0250      90       "LED SMT Green Chip Waterclear 3.2V 20mA 0402"                                                                                         
 C14        GRM155R60J475ME47D       TopLayer SMD-0402-CAP                   72,1250      13,0300      270      "CAP CER SMT 4.7uF 20% 6.3V X5R 0402"                                                                                                  
 C13        GRM155C71A105KE11D       TopLayer SMD-0402-CAP                   72,6000      18,0750      270      "CAP CER 1uF 10% 10V X7S 0402"                                                                                                         
-R12        ERJ-2RKF1001X            TopLayer SMD-0402-RES                   78,9000      12,9500      270      "RES SMT 1kO 1% 100mW 100ppm/°C 0402"                                                                                                  
+R12        ERJ-2RKF1001X            TopLayer SMD-0402-RES                   78,9000      12,9500      270      "RES SMT 1kO 1% 100mW 100ppm/Â°C 0402"                                                                                                  
 R11        CRCW040210K0FKED         TopLayer SMD-0402-RES                   76,0000      18,2000      180      "RES SMD 10kO 1% 62.5mW 100PPM 0402"                                                                                                   
 D3         150040GS73240            TopLayer SMD-0402-LED-0.4H              79,5000      11,0000      90       "LED SMT Green Chip Waterclear 3.2V 20mA 0402"                                                                                         
 C7         GRM155R60J475ME47D       TopLayer SMD-0402-CAP                   77,0000      13,0300      270      "CAP CER SMT 4.7uF 20% 6.3V X5R 0402"                                                                                                  
@@ -37,7 +25,7 @@ C15        C0402C104K3RACTU         TopLayer SMD-0402-CAP                   46,0
 X8         B4B-PH-K-S(LF)(SN)       TopLayer B4B-PH-K-S                     76,0000      21,5000      180      "Header THT Male 4 Pin 1 Row 2mm Pitch Vertical Tin Plated"                                                                            
 R13        CRCW040210K0FKED         TopLayer SMD-0402-RES                   69,0500      12,9050      270      "RES SMD 10kO 1% 62.5mW 100PPM 0402"                                                                                                   
 R9         CRCW040210K0FKED         TopLayer SMD-0402-RES                   84,0000      12,9050      270      "RES SMD 10kO 1% 62.5mW 100PPM 0402"                                                                                                   
-R8         ERJ-2RKF1001X            TopLayer SMD-0402-RES                   11,3500      5,3750       180      "RES SMT 1kO 1% 100mW 100ppm/°C 0402"                                                                                                  
+R8         ERJ-2RKF1001X            TopLayer SMD-0402-RES                   11,3500      5,3750       180      "RES SMT 1kO 1% 100mW 100ppm/Â°C 0402"                                                                                                  
 D4         150040GS73240            TopLayer SMD-0402-LED-0.4H              69,5000      11,0000      90       "LED SMT Green Chip Waterclear 3.2V 20mA 0402"                                                                                         
 D2         150040GS73240            TopLayer SMD-0402-LED-0.4H              84,5000      11,0000      90       "LED SMT Green Chip Waterclear 3.2V 20mA 0402"                                                                                         
 D1         150040GS73240            TopLayer SMD-0402-LED-0.4H              11,3500      3,5250       90       "LED SMT Green Chip Waterclear 3.2V 20mA 0402"                                                                                         
