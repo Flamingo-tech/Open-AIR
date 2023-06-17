@@ -85,9 +85,39 @@ Please pay close attention to the sequence in which the cables need to be connec
 
 Once all the cables are connected, make it a point to give each of them a gentle pull. This is to doubly ensure that they are firmly and correctly connected, providing a secure foundation for optimal operation.
 
-Next, reconnect the power plug to your Ducobox. You should now see a multitude of green LEDs light up.
+# 6. Powering up Your Open AIR Mini
+
+Reconnect the power plug to your Ducobox. You should now see a multitude of green LEDs light up.
 Ensure that all five LEDs at the top of the circuit board are illuminated. If any of them are not on, please reach out to me at flamingo-tech@protonmail.com for assistance.
 If you have the **pre-programmed option**, the ESPHome LED (marked by the lower green LED) should be blinking.
 ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/Pictures/14.jpg?raw=true)
 
 Now you can finally close the ventilation box.
+
+# 7. Adding the Open AIR Mini to Home Assistant
+
+Now open your home assistant page.
+If this is the first time using a ESPHOME device:
+Go to settings -> Integrations -> Set up a new integration -> Search for esphome.
+Now click the esphome intergration and fill in the IP adress of the Home Assistant server. 
+
+Use your mobile phone and or laptop for this step. Please connect to the following network: "Open-AIR-Mini Fallback"
+Use this password: "ChangeMe@123!"
+Once you've successfully connected to the fallback hotspot using your phone or laptop, opening your browser should direct you to a landing page where you can establish your own network.
+If you don't automatically land on this page, you can manually navigate to it by entering the following URL: http://192.168.4.1 in the browser and navigate to it.
+Upon reaching this page, you should be greeted with a screen that resembles the following:
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/Pictures/15.png?raw=true)
+Next, select your network and input your credentials. After this step, the device will undergo a reboot process, which may take approximately 4-5 minutes. Once completed, you should be able to see your Home Assistant (HA) environment directly, ensuring a smooth setup process.
+
+Should you encounter any difficulties and the process fails for some reason, you have the option to manually reset the device using the reset button. If the fallback hotspot reappears, this suggests that the Open AIR Mini was unable to establish a connection with your network. In such a case, please attempt the process again.
+
+It's worth noting that if you're utilizing a hidden SSID you cant use the pre-programmed option!
+
+
+Upon successful completion of these steps, your Home Assistant should generate a "New Devices Discovered" notification. To proceed, click on the "Check it Out" option, then select the "Configure" button on the new ESPHome device. A pop-up window should appear next; hit the "Submit" button.
+
+Congratulations, you're all set! You can now begin creating custom automations for your device. Enjoy exploring the possibilities this brings to your home environment.
+
+**After adding the Open AIR Mini to a dashboard long press the fan logo and then you can change the RPM**
+
+Have fun :)
