@@ -36,11 +36,11 @@ The following pins need to be available:
  - 2 Power Supply 230VAC 50-60Hz
  - 3 Neutral conductor
  
- Control cabeling:
+ Control cabling:
  - 4 GND (on ebmpapst motors BLUE)
  - 5 Tach output (on ebmpapst motors WHITE)
  - 6 10V Output (on ebmpapst motors RED)
- - 7 0-10V PWM Input ((on ebmpapst motors YELLOW)
+ - 7 0-10V PWM Input (on ebmpapst motors YELLOW)
  
 
 # ⚠ Important
