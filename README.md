@@ -56,17 +56,17 @@ For more information about the Open AIR Valve see: [Open AIR Valve](https://gith
 # Progress:
 
 
-|   Part:         |Done:	                         |Version:                       |Duco Part Number|Backwards compatible|
-|----------------|-------------------------------|-----------------------------|-----------------------------|-----------------------------|
-|Open AIR Mini|✔️         |V1.3.0          | -|✔️ 
-|Open AIR Pro         |❌|-|- |
-|Moisture Sensor        |✔️            |V2.0        | 0000-4218 | ✔️|
-|CO2 Sensor         |✔️|V2.1| 0000-4216 | ✔️
-|All-In-One Sensor         |✔️|V2.1| - | ❌ 
-|Programmer         |✔️|V1.1.0| - | ✔️ 
-|Open AIR Valve         |✔️|V1.3.0|- |❌
-|External Open AIR Valve         |❌|❌|- |❌
-|Open AIR Ventilation Box         |❌|❌|- |❌
+|   Part:                     |Done: |Version:    |Duco Part Number:|Backwards compatible:|Active:|Store Link:|
+|:----------------------------|:-----|:-----------|:----------------|:--------------------|:------|:----------|
+|Open AIR Mini                |✔️    |V1.3.0      | -               |✔️                     |✔️    |[Click](https://www.tindie.com/products/theflamingo/open-air-mini-v130/) 
+|Open AIR Pro                 |❌    |-           |-                |-                      |❌    |
+|Moisture Sensor              |✔️    |V2.0.0      | 0000-4218       | ✔️                    |✔️    |[Click](https://www.tindie.com/products/theflamingo/open-air-humidity-sensor/)
+|CO2 Sensor                   |✔️    |V2.1.0      | 0000-4216       | ✔️                    |❌    |
+|Sense Board (RH,Co2,VOC, NOx)|✔️    |V1.0.0      | -               | ❌                    |✔️    |[Click](https://www.tindie.com/products/theflamingo/open-air-sense-board/)
+|Programmer                   |✔️    |V1.1.0      | -               | ✔️                    |✔️    |
+|Open AIR Valve               |✔️    |V1.3.0      |-                |❌                     |✔️    |[Click](https://www.tindie.com/products/theflamingo/open-air-valve/)
+|External Open AIR Valve      |❌    |❌          |-                |❌                     |❌    |          
+
 
 # Backwards Compatibility
 
