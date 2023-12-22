@@ -75,6 +75,7 @@ If there is a checkmark in the 'Backwards Compatible' column of the table above,
 # Special thanks:
 [@thomasvnl](https://github.com/thomasvnl) For writing the Valve firmware and valuable feedback.\
 [@Septillion](https://github.com/septillion-git) Thanks for providing valuable feedback.\
-[@KristofRobberechts ](https://github.com/KristofRobberechts) For providing a beautiful valve design!
+[@KristofRobberechts ](https://github.com/KristofRobberechts) For providing a beautiful valve design!\
+[@slurpgeit](https://github.com/Slurpgeit) Helping write new firmware for the SHT-21 sensor + button software for the Open AIR Mini.
 
 D.Smith For the first version of the installation manual
