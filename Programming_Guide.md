@@ -77,7 +77,7 @@ Follow the Option 1 Esphome installation tutorial.
      - Sometimes it will ask for an OTA password. By default, this is: `9f2ab9aa715f573e2476e75a5ec7f4e7`.      		
    - Press Enter to start the process. 
 
-## Option 3: OTA (Over-The-Air) from ESPHome
+## Option 3: OTA (Over-The-Air) from the browser
 
 Follow the Option 1 Esphome installation tutorial.
 
