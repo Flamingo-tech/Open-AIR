@@ -55,32 +55,35 @@ When done it should look like this:
 # 3. Remove Original Hardware
 
 Please use a screwdriver to carefully remove the four screws indicated in red in the image provided.
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/5.jpg)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/5.jpg?raw=true)
 
 Be sure to safely store the original circuit board after removal. If you ever decide to sell or rent your house in the future, you'll have the option to reinstall the original Duco hardware. Its availability will provide flexibility for future circumstances.
 
 # 4. Insert Open AIR Mini
 
 For the installation of the Open AIR Mini, position it as follows:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/20240302_122919.jpg)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/20240302_122919.jpg?raw=true)
 Proceed to secure the Open AIR Mini by reinstalling the screws into the locations indicated in red:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/7.jpg)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/7.jpg?raw=true)
 
 # 5. Connect your Open AIR Mini
 
 To provide power to your Open Air Mini, you'll need to connect the power cable to the bottom connector, which is colored green. **This is a crucial step: Press the orange tab and insert the cable simultaneously to ensure a solid connection.**
 
 This process involves pushing the cable in as far as it will go. Once the cable is fully inserted, release the orange tab. Finally, give the cable a gentle pull to confirm it's securely connected. It's essential that the connection is firm to ensure proper operation.
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/8.jpg)
+
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/8.jpg?raw=true)
 Please pay close attention to the sequence in which the cables need to be connected!
 
 After this connect the motor power:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/9.jpg)
+
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/9.jpg?raw=true)
 Please pay close attention to the sequence in which the cables need to be connected!
 
 
 Now connect the motor data cable:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/11.jpg)
+
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/11.jpg?raw=true)
 Please pay close attention to the sequence in which the cables need to be connected!
 
 
@@ -91,7 +94,7 @@ Once all the cables are connected, make it a point to give each of them a gentle
 Reconnect the power plug to your Ducobox. You should now see a multitude of green LEDs light up.
 Ensure that all five LEDs at the top of the circuit board are illuminated. If any of them are not on, please reach out to me at flamingo-tech@protonmail.com for assistance.
 If you have the **pre-programmed option**, the ESPHome LED (marked by the lower green LED) should be blinking.
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/12.jpg)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/12.jpg?raw=true)
 
 Now you can finally close the ventilation box.
 
@@ -107,7 +110,7 @@ Use this password: "ChangeMe@123!"
 Once you've successfully connected to the fallback hotspot using your phone or laptop, opening your browser should direct you to a landing page where you can establish your own network.
 If you don't automatically land on this page, you can manually navigate to it by entering the following URL: http://192.168.4.1 in the browser and navigate to it.
 Upon reaching this page, you should be greeted with a screen that resembles the following:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/13.jpg))
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/13.jpg?raw=true)
 Next, select your network and input your credentials. After this step, the device will undergo a reboot process, which may take approximately 4-5 minutes. Once completed, you should be able to see your Home Assistant (HA) environment directly, ensuring a smooth setup process.
 
 Should you encounter any difficulties and the process fails for some reason, you have the option to manually reset the device using the reset button. If the fallback hotspot reappears, this suggests that the Open AIR Mini was unable to establish a connection with your network. In such a case, please attempt the process again.
