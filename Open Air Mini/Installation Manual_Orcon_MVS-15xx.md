@@ -39,7 +39,7 @@ The cover may prove challenging to detach as it is secured by four semi-circular
 
 # 2 Remove Power
 
-It is critical to disconnect your Ducobox Silent before proceeding. This step is extremely important. **Neglecting to do so could result in severe injury or even death. Make sure to cut off all power supply.**
+It is critical to disconnect your Orcon ventilation before proceeding. This step is extremely important. **Neglecting to do so could result in severe injury or even death. Make sure to cut off all power supply.**
 
 Ensure, then doubly ensure, that you've disconnected the correct plug. It's better to check multiple times than risk an accident.
 
