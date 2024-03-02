@@ -3,9 +3,9 @@
 Open AIR Mini is an open-source project that aims to provide firmware and hardware for home ventilation boxes. The project has several goals, including open-source hardware and software, Wi-Fi connectivity, full controllability by Home Assistant, temperature-based ventilation, backward compatibility with Duco sensors, and support for different home ventilation boxes.
 
 ## The Hardware
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/Pictures/Open_AIR_Mini_V1.3.0.jpg?raw=true)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/Open_AIR_Mini_V1.4.1_ALTIUM.png?raw=true)
 Open AIR mini installed:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/Pictures/Open_AIR-Mini_V1.3.0_Installed.jpg?raw=true)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/20240302_122919.jpg?raw=true)
 The Open AIR Mini hardware supports two sensors on the main board, Wi-Fi connectivity, Home Assistant integration via the ESPHome interface, OTA support, two sensor connectors, a robust power design, and status LEDs. The device is installed by connecting it to the ventilation box, and it can work with different home ventilation boxes. 
 
 ### Status LEDS
@@ -16,14 +16,13 @@ The Open AIR Mini from version V1.3.0 and above include five LEDs. The first LED
 The ESP32 has a status LED located under it, which displays three different statuses. It blinks slowly (about every second) when a warning is active, blinks quickly (multiple times per second) when an error is active, and stays off otherwise.
 
 ## Supported Ventilation Boxes
-
 ⚠No RF devices are supported⚠
 The Open AIR Mini works with the following ventilation boxes:
  - DucoBox Silent Standard
  - DucoBox Silent Perilex
  - DucoBox Silent Connect
  - DucoBox Focus (Warning: Original Duco Valves are not supported!)
- - Orcon MVS-15RH
+ - Orcon MVS-15xx
  - and more (see schematic below)
  
  If your home ventilation motor supports the following connections (See image below) Then you can use the Open Air Mini
