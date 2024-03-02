@@ -111,7 +111,7 @@ Use this password: "ChangeMe@123!"
 Once you've successfully connected to the fallback hotspot using your phone or laptop, opening your browser should direct you to a landing page where you can establish your own network.
 If you don't automatically land on this page, you can manually navigate to it by entering the following URL: http://192.168.4.1 in the browser and navigate to it.
 Upon reaching this page, you should be greeted with a screen that resembles the following:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/13.jpg?raw=true)
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/13.png?raw=true)
 Next, select your network and input your credentials. After this step, the device will undergo a reboot process, which may take approximately 4-5 minutes. Once completed, you should be able to see your Home Assistant (HA) environment directly, ensuring a smooth setup process.
 
 Should you encounter any difficulties and the process fails for some reason, you have the option to manually reset the device using the reset button. If the fallback hotspot reappears, this suggests that the Open AIR Mini was unable to establish a connection with your network. In such a case, please attempt the process again.
