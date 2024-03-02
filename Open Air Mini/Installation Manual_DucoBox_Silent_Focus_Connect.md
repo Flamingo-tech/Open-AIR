@@ -73,19 +73,20 @@ To provide power to your Open Air Mini, you'll need to connect the power cable t
 This process involves pushing the cable in as far as it will go. Once the cable is fully inserted, release the orange tab. Finally, give the cable a gentle pull to confirm it's securely connected. It's essential that the connection is firm to ensure proper operation.
 
 ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/8.jpg?raw=true)
+
 Please pay close attention to the sequence in which the cables need to be connected!
 
 After this connect the motor power:
 
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/9.jpg?raw=true)
-Please pay close attention to the sequence in which the cables need to be connected!
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/10.jpg?raw=true)
 
+Please pay close attention to the sequence in which the cables need to be connected!
 
 Now connect the motor data cable:
 
 ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/11.jpg?raw=true)
-Please pay close attention to the sequence in which the cables need to be connected!
 
+Please pay close attention to the sequence in which the cables need to be connected!
 
 Once all the cables are connected, make it a point to give each of them a gentle pull. This is to doubly ensure that they are firmly and correctly connected, providing a secure foundation for optimal operation.
 
