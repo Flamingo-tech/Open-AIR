@@ -4,12 +4,18 @@ Open AIR Mini is an open-source project that aims to provide firmware and hardwa
 
 ## The Hardware
 ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/Open_AIR_Mini_V1.4.1_ALTIUM.png?raw=true)
-Open AIR mini installed:
+Open AIR mini installed on DucoBox system:
 ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/20240302_122919.jpg?raw=true)
 The Open AIR Mini hardware supports two sensors on the main board, Wi-Fi connectivity, Home Assistant integration via the ESPHome interface, OTA support, two sensor connectors, a robust power design, and status LEDs. The device is installed by connecting it to the ventilation box, and it can work with different home ventilation boxes. 
 
+Open AIR mini installed on Orcon system:
+![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/20240302_124957.jpg?raw=true)
+Since version V1.4.0 the Open AIR Mini can be directly installed in the ORCON MVS-15XX series of boxes. The original Orcon sensors and RF stuff is not supported! However we are working to make all the Open AIR Sensors compatible :)
+On the Orcon systems only a single sensor is supported
+
+
 ### Status LEDS
- ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Hardware/Pictures/Open_AIR_Mini_LEDS.png?raw=true)
+ ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/Open_AIR_Mini_LEDS.png?raw=true)
 
 The Open AIR Mini from version V1.3.0 and above include five LEDs. The first LED (AC/DC) indicates the status of the Meanwell AC-> DC Converter, and if it is off, the device has no 230VAC power. The second and third LEDs (Sense LED and Sense LED 2) indicate the 5V and 3.3V sensor power, respectively. The fourth LED (ESP32 LED) indicates the 3.3V power supply for the ESP32, and the fifth LED (Motor) indicates the 10V output from the motor. All LEDs should be on in normal operation. 
 
