@@ -1,4 +1,4 @@
- # Easy installation Manual For Open AIR Mini
+ # Easy installation Manual For Open AIR Mini in Duco Systems
 
  **Special thanks to D.Smith for helping and inspiring me for writing this :)!**
 
