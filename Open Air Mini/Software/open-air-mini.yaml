@@ -107,6 +107,7 @@ sensor:
     pin: GPIO14
     unit_of_measurement: 'RPM'
     name: 'AIR Mini RPM'
+    id: open_air_mini_rpm
 
 script:
   # Below includes for disconnected mode are mutually exclusive. Only use one at a time!
