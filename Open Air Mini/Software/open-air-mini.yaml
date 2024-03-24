@@ -57,32 +57,61 @@ globals:
     restore_value: no
     initial_value: "55"
 
-#
+# From V1.4.0 The Sensor pins on the Open AIR Mini are swapped. Correct example is below:
 uart:
-#UART For Sensor 1
+#UART For Sensor 2
  - rx_pin: GPIO13
    tx_pin: GPIO12
    baud_rate: 9600
-   id: uart_sensor_1
-#UART For Sensor 2
+   id: uart_sensor_2
+#UART For Sensor 1
  - rx_pin: GPIO25
    tx_pin: GPIO26
    baud_rate: 9600
-   id: uart_sensor_2
+   id: uart_sensor_1
 
 i2c:
-#I2C For Sensor 1
-- id: i2c_sensor_1
+#I2C For Sensor 2
+- id: i2c_sensor_2
   sda: GPIO19
   scl: GPIO18
   scan: false
   frequency: 400kHz
-#I2C For Sensor 2
-- id: i2c_sensor_2
+#I2C For Sensor 1
+- id: i2c_sensor_1
   sda: GPIO16
   scl: GPIO4
   scan: false
   frequency: 400kHz
+
+#For version <1.4.0 use: (remove the #)
+#uart:
+#UART For Sensor 2
+ #- rx_pin: GPIO13
+   #tx_pin: GPIO12
+   #baud_rate: 9600
+   #id: uart_sensor_2
+#UART For Sensor 1
+ #- rx_pin: GPIO25
+   #tx_pin: GPIO26
+   #baud_rate: 9600
+   #id: uart_sensor_1
+
+#i2c:
+#I2C For Sensor 2
+#- id: i2c_sensor_2
+  #sda: GPIO19
+  #scl: GPIO18
+  #scan: false
+  #frequency: 400kHz
+#I2C For Sensor 1
+#- id: i2c_sensor_1
+  #sda: GPIO16
+  #scl: GPIO4
+  #scan: false
+  #frequency: 400kHz
+
+  
 
 # Status led
 status_led:
