@@ -26,7 +26,7 @@ binary_sensor:
 The following sensors are supported right away, either via ESPHome or via a custom implementation.
 
 ### New Sensors:
-1. [SHT-20](#sensor-support-sht-20)
+1. [SHT-20](#sensor-support-SHT-20)
 1. [SCD-40](#sensor-support-SCD-4X)
 1. [SGP-41](#sensor-support-SGP-41)
 1. [SCD-40 & SGP-41 Combination Sensor](#SCD-40-&-SGP-41-Combination-Sensor)
@@ -39,7 +39,7 @@ The following sensors are supported right away, either via ESPHome or via a cust
 
 ## New:
 
-### SHT-20 Sensor
+### Sensor Support: SHT-20
 
 If you have a SHT-20 Sensor add the following code at the bottom of `open-air-valve.yaml` 
 
