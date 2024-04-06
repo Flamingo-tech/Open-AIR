@@ -27,9 +27,9 @@ The following sensors are supported right away, either via ESPHome or via a cust
 
 ### New Sensors:
 1. [SHT-20](#sensor-support-sht-20)
-1. [SCD-40]
-1. [SGP-41]
-1. [SCD-40 & SGP-41 Combination Sensor]
+1. [SCD-40](#sensor-support-SCD-4X)
+1. [SGP-41](#sensor-support-SGP-41)
+1. [SCD-40 & SGP-41 Combination Sensor](#SCD-40-&-SGP-41-Combination-Sensor)
 
 ### Old Sensors:
 1. [SHT-31](#sensor-support-sht-31)
@@ -64,11 +64,7 @@ external_components:
 ```
 Thanks @dmaasland : https://github.com/dmaasland/esphome/tree/sht2x/esphome/components/sht2x
 
-Place the SHT20.H file in the same directory as the `open-air-valve.yaml`.
-
-@[wre](https://github.com/wrenoud) Thanks for your support on this sensor implementation
-
-### Sensor Support: SCD-40
+### Sensor Support: SCD-4X
 
 More info about this sensor and ESPhome : https://esphome.io/components/sensor/scd4x.html
 
@@ -115,7 +111,7 @@ sensor:
     update_interval: 30s
 ```
 
-### Sensor Support: SCD-40 & SGP-41 Combination sensor
+### Sensor Support: SCD-40 & SGP-41 Combination Sensor
 
 More info about this sensor and ESPhome : https://esphome.io/components/sensor/sgp4x.html
 
