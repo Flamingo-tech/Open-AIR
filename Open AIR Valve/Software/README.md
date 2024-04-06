@@ -26,6 +26,7 @@ binary_sensor:
 The following sensors are supported right away, either via ESPHome or via a custom implementation.
 
 ### New Sensors:
+All Valves are now shipped with these sensors:
 1. [SHT-20](#sensor-support-SHT-20)
 1. [SCD-40](#sensor-support-SCD-4X)
 1. [SGP-41](#sensor-support-SGP-41)
