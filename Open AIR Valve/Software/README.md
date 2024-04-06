@@ -6,16 +6,155 @@ More documentation might come available in future updates. Make sure to copy `ex
 
 Change the "X" in `open-air-valve.yaml` with a number or a letter. This will help you identify the Open AIR Valves.
 
+## Hall Sensor Homing
+
+Since version V1.4.0 of the Open AIR Valve , the Omron Switch is changed for a more reliable mechanism: A hall sensor.
+The signal of the sensor is inverted! so a small change to your YAML file is needed if you upgrade.
+
+```yaml
+binary_sensor:
+  - platform: gpio
+    id: valve_homing_switch
+    pin:
+      number: GPIO35
+      inverted: true #Change this to "false" if you hava a homing switch from pre V1.4.0 Open AIR Valve.
+    name: "Valve Closed Switch"
+```
+
 ## Sensors
 
 The following sensors are supported right away, either via ESPHome or via a custom implementation.
 
+### New Sensors:
+1. [SHT-20](#sensor-support-sht-20)
+1. [SCD-40]
+1. [SGP-41]
+1. [SCD-40 & SGP-41 Combination Sensor]
+
+### Old Sensors:
 1. [SHT-31](#sensor-support-sht-31)
 1. [Senseair S8](#sensor-support-senseair-s8)
-1. [SHT-20](#sensor-support-sht-20)
 1. [SHT-31 & Senseair S8 Combination Sensor](#Using-the-Combination-Sensor-with-Senseair-S8-&-SHT-31-on-the-same-board)
 
 
+## New:
+
+### SHT-20 Sensor
+
+If you have a SHT-20 Sensor add the following code at the bottom of `open-air-valve.yaml` 
+
+```yaml
+external_components:
+  - source: github://dmaasland/esphome@sht2x
+    components: [ sht2x ]
+```
+
+```yaml
+  - platform: sht2x
+    i2c_id: i2c_sensor_1
+    temperature:
+      name: "Open AIR Valve x Temperature"
+      id: air_temperature
+      accuracy_decimals: 2
+    humidity:
+      name: "Open AIR Valve x Humidity"
+      id: air_humidity
+      accuracy_decimals: 2
+    update_interval: 30s
+```
+Thanks @dmaasland : https://github.com/dmaasland/esphome/tree/sht2x/esphome/components/sht2x
+
+Place the SHT20.H file in the same directory as the `open-air-valve.yaml`.
+
+@[wre](https://github.com/wrenoud) Thanks for your support on this sensor implementation
+
+### Sensor Support: SCD-40
+
+More info about this sensor and ESPhome : https://esphome.io/components/sensor/scd4x.html
+
+If you want to add a SCD-40 moisture & Temperature sensor & Co2 sensor to the Open AIR Mini, add the following code at the bottom of the `open-air-valve.yaml` file.
+
+```yaml
+sensor:
+  - platform: scd4x
+    i2c_id: i2c_sensor_1 
+      name: "Open AIR Valve x CO2"
+      id: air_Co2
+      accuracy_decimals: 0
+    temperature:
+      name: " Open AIR Valve x Temperature"
+      id: air_temperature
+      accuracy_decimals: 2
+    humidity:
+      name: " Open AIR Valve x Humidity"
+      id: air_humidity
+      accuracy_decimals: 2
+    update_interval: 30s
+    measurement_mode: periodic
+```
+
+### Sensor Support: SGP-41
+
+More info about this sensor and ESPhome : https://esphome.io/components/sensor/sgp4x.html & https://esphome.io/components/sensor/scd4x.html
+
+If you want to add a combination sensor SCD-40 moisture & Temperature sensor & Co2 sensor & SGP-41 VOC & NOx to the Open AIR Mini, add the following code at the bottom of the `open-air-valve.yaml` file.
+
+```yaml
+sensor:
+  - platform: sgp4x
+    i2c_id: i2c_sensor_1 
+    voc:
+      name: "VOC Index Valve x"
+      id: air_VOC
+    nox:
+      name: "NOx Index Valve x"
+      id: air_NOx
+    compensation:
+      temperature_source: air_temperature #Make sure to match these if you change ID's.
+      humidity_source: air_humidity       #Make sure to match these if you change ID's.
+    update_interval: 30s
+```
+
+### Sensor Support: SCD-40 & SGP-41 Combination sensor
+
+More info about this sensor and ESPhome : https://esphome.io/components/sensor/sgp4x.html
+
+If you want to add a SGP-41 VOC & NOx to the Open AIR Mini, add the following code at the bottom of the `open-air-valve.yaml` file.
+
+```yaml
+sensor:
+  - platform: scd4x
+    i2c_id: i2c_sensor_1 
+      name: "Open AIR Mini Sensor Valve x CO2"
+      id: air_Co2
+      accuracy_decimals: 0
+    temperature:
+      name: "Open AIR Mini Sensor Valve x Temperature"
+      id: air_temperature
+      accuracy_decimals: 2
+    humidity:
+      name: "Open AIR Mini Sensor Valve x Humidity"
+      id: air_humidity
+      accuracy_decimals: 2
+    update_interval: 30s
+    measurement_mode: periodic
+
+  - platform: sgp4x
+    i2c_id: i2c_sensor_1 
+    voc:
+      name: "Valve x VOC Index "
+      id: air_VOC
+    nox:
+      name: "Valve x NOx Index "
+      id: air_NOx
+    compensation:
+      temperature_source: air_temperature #Make sure to match these if you change ID's.
+      humidity_source: air_humidity       #Make sure to match these if you change ID's.
+    update_interval: 30s
+```
+
+
+## Old:
 
 ### Sensor Support: SHT-31
 
@@ -54,46 +193,6 @@ sensor:
 ```
 
 
-### SHT-20 Sensor
-
-If you have a SHT-20 Sensor add the following code at the bottom of `open-air-valve.yaml` 
-
-```yaml
-sensor:
-  - platform: custom
-    lambda: |-
-      auto sht20 = new SHT20();
-      App.register_component(sht20);
-      return {sht20->temperature_sensor, sht20->humidity_sensor, sht20->vpd_sensor, sht20->dew_point_sensor};
-    sensors:
-      - name: "Temperature Open AIR Valve x"
-        id: air_temperature
-        unit_of_measurement: °C
-        accuracy_decimals: 2
-      - name: "Humidity Open AIR Valve x"
-        id: air_humidity
-        unit_of_measurement: "%"
-        accuracy_decimals: 2
-      - name: "Open AIR Valve x Vapour-pressure deficit"
-        id: air_vapor_pressure_deficit
-        unit_of_measurement: "kPa"
-        accuracy_decimals: 2
-      - name: "Open AIR Valve x Dew point"
-        id: air_dew_point
-        unit_of_measurement: °C
-        accuracy_decimals: 2
-```
-Add the following righ below "board: esp32dev" 
-```yaml
-  libraries:
-    - Wire
-    - u-fire/uFire SHT20@^1.1.1
-  includes: sht20.h
-```
-
-Place the SHT20.H file in the same directory as the `open-air-valve.yaml`.
-
-@[wre](https://github.com/wrenoud) Thanks for your support on this sensor implementation
 
 ### Using the Combination Sensor with Senseair S8 & SHT-31 on the same board
 

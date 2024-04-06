@@ -182,7 +182,9 @@ stepper:
 binary_sensor:
   - platform: gpio
     id: valve_homing_switch
-    pin: GPIO35
+    pin:
+      number: GPIO35
+      inverted: true #Change this to "false" if you hava a homing Switch pre V1.4.0 valve
     name: "Valve Closed Switch"
 
 switch:
