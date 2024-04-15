@@ -14,15 +14,15 @@ Depending on what sensor is connected to what connector you need to declare the 
 For example, for uart:
 ```C++
 #choose between:
-uart_id: uart_sensor_1 // Only used for the Senseair S8 CO2 sensor
-uart_id: uart_sensor_2 // Only used for the Senseair S8 CO2 sensor
+uart_id: uart_sensor_1 // Only used for the Senseair S8 CO2 sensor (Original Duco Co2 Sensor)
+uart_id: uart_sensor_2 // Only used for the Senseair S8 CO2 sensor (Original Duco Co2 Sensor)
 ```
 
 
 For example, for I<sup>2</sup>C
 ```C++
-i2c_id: i2c_sensor_1 // Used for RH sensors
-i2c_id: i2c_sensor_2 // Used for RH sensors
+i2c_id: i2c_sensor_1 // Used for RH , Co2 , Nox and VOc sensors
+i2c_id: i2c_sensor_2 // Used for RH , Co2 , Nox and VOc sensors
 ```
 Example:
 ```yaml
@@ -51,10 +51,133 @@ sensor:
 
 The following sensors are supported right away, either via ESPHome or via a custom implementation.
 
+### New Sensors:
+All Valves are now shipped with these sensors:
+1. [SHT-20](#sensor-support-SHT-20)
+1. [SCD-40](#sensor-support-SCD-4X)
+1. [SGP-41](#sensor-support-SGP-41)
+1. [SCD-40 & SGP-41 Combination Sensor](#SCD-40-&-SGP-41-Combination-Sensor)
+
+### Old Sensors:
 1. [SHT-31](#sensor-support-sht-31)
 1. [Senseair S8](#sensor-support-senseair-s8)
-1. [SHT-20](#sensor-support-sht-20)
 1. [SHT-31 & Senseair S8 Combination Sensor](#Using-the-Combination-Sensor-with-Senseair-S8-&-SHT-31-on-the-same-board)
+
+
+## New:
+
+### Sensor Support: SHT-20
+
+If you have a SHT-20 Sensor add the following code at the bottom of `open-air-mini.yaml` 
+
+```yaml
+external_components:
+  - source: github://dmaasland/esphome@sht2x
+    components: [ sht2x ]
+```
+
+```yaml
+  - platform: sht2x
+    i2c_id: i2c_sensor_1
+    temperature:
+      name: "Open AIR Mini x Temperature"
+      id: air_temperature
+      accuracy_decimals: 2
+    humidity:
+      name: "Open AIR Mini x Humidity"
+      id: air_humidity
+      accuracy_decimals: 2
+    update_interval: 30s
+```
+Thanks @dmaasland : https://github.com/dmaasland/esphome/tree/sht2x/esphome/components/sht2x
+
+### Sensor Support: SCD-4X
+
+More info about this sensor and ESPhome : https://esphome.io/components/sensor/scd4x.html
+
+If you want to add a SCD-40 moisture & Temperature sensor & Co2 sensor to the Open AIR Mini, add the following code at the bottom of the `open-air-mini.yaml` file.
+
+```yaml
+sensor:
+  - platform: scd4x
+    i2c_id: i2c_sensor_1 
+      name: "Open AIR Mini x CO2"
+      id: air_Co2
+      accuracy_decimals: 0
+    temperature:
+      name: " Open AIR Mini x Temperature"
+      id: air_temperature
+      accuracy_decimals: 2
+    humidity:
+      name: " Open AIR Mini x Humidity"
+      id: air_humidity
+      accuracy_decimals: 2
+    update_interval: 30s
+    measurement_mode: periodic
+```
+
+### Sensor Support: SGP-41
+
+More info about this sensor and ESPhome : https://esphome.io/components/sensor/sgp4x.html & https://esphome.io/components/sensor/scd4x.html
+
+If you want to add a combination sensor SCD-40 moisture & Temperature sensor & Co2 sensor & SGP-41 VOC & NOx to the Open AIR Mini, add the following code at the bottom of the `open-air-mini.yaml` file.
+
+```yaml
+sensor:
+  - platform: sgp4x
+    i2c_id: i2c_sensor_1 
+    voc:
+      name: "VOC Index Mini x"
+      id: air_VOC
+    nox:
+      name: "NOx Index Mini x"
+      id: air_NOx
+    compensation:
+      temperature_source: air_temperature #Make sure to match these if you change ID's.
+      humidity_source: air_humidity       #Make sure to match these if you change ID's.
+    update_interval: 30s
+```
+
+### Sensor Support: SCD-40 & SGP-41 Combination Sensor
+
+More info about this sensor and ESPhome : https://esphome.io/components/sensor/sgp4x.html
+
+If you want to add a SGP-41 VOC & NOx to the Open AIR Mini, add the following code at the bottom of the `open-air-mini.yaml` file.
+
+```yaml
+sensor:
+  - platform: scd4x
+    i2c_id: i2c_sensor_1 
+      name: "Open AIR Mini Sensor Mini x CO2"
+      id: air_Co2
+      accuracy_decimals: 0
+    temperature:
+      name: "Open AIR Mini Sensor Mini x Temperature"
+      id: air_temperature
+      accuracy_decimals: 2
+    humidity:
+      name: "Open AIR Mini Sensor Mini x Humidity"
+      id: air_humidity
+      accuracy_decimals: 2
+    update_interval: 30s
+    measurement_mode: periodic
+
+  - platform: sgp4x
+    i2c_id: i2c_sensor_1 
+    voc:
+      name: "Open AIR Mini x VOC Index "
+      id: air_VOC
+    nox:
+      name: "Open AIR Mini x NOx Index "
+      id: air_NOx
+    compensation:
+      temperature_source: air_temperature #Make sure to match these if you change ID's.
+      humidity_source: air_humidity       #Make sure to match these if you change ID's.
+    update_interval: 30s
+```
+
+
+## Old:
 
 ### Sensor Support: SHT-31
 
@@ -76,11 +199,12 @@ sensor:
     update_interval: 60s
 ```
 
+
 ### Sensor Support: Senseair S8
 
 More info about this sensor and ESPhome : https://esphome.io/components/sensor/senseair.html?highlight=co2+senseair
 
-If you want to add a Senseair S8 CO2 sensor to the Open AIR Mini, add the following code at the bottom of the `open-air-mini.yaml` file.
+If you want to add a Senseair S8 Co2 sensor to the Open AIR Valve. Add the following code at the bottom of `open-air-valve.yaml` 
 
 ```yaml
 sensor:
@@ -91,53 +215,11 @@ sensor:
     update_interval: 60s
 ```
 
-### Sensor Support: SHT-20
-⚠️ The original temperature and humidity sensor can only be connected on sensor connector 1, thus using I<sup>2</sup>C bus 1 (which is implicitly used).
 
-If you have a SHT-20 Sensor add the following code at the bottom of `open-air-mini.yaml`
-
-```yaml
-sensor:
-  - platform: custom
-    lambda: |-
-      auto sht20 = new SHT20();
-      App.register_component(sht20);
-      return {sht20->temperature_sensor, sht20->humidity_sensor, sht20->vpd_sensor, sht20->dew_point_sensor};
-    sensors:
-      - name: "Temperature Open AIR Mini x"
-        id: air_temperature
-        unit_of_measurement: °C
-        accuracy_decimals: 2
-      - name: "Humidity Open AIR Mini x"
-        id: air_humidity
-        unit_of_measurement: "%"
-        accuracy_decimals: 2
-      - name: "Open AIR Mini x Vapour-pressure deficit"
-        id: air_vapor_pressure_deficit
-        unit_of_measurement: "kPa"
-        accuracy_decimals: 2
-      - name: "Open AIR Mini x Dew point"
-        id: air_dew_point
-        unit_of_measurement: °C
-        accuracy_decimals: 2
-
-```
-
-Add the following righ below "board: esp32dev" 
-```yaml
-  libraries:
-    - Wire
-    - u-fire/uFire SHT20@^1.1.1
-  includes: sht20.h
-```
-
-Place the SHT20.H file in the same directory as the `open-air-mini.yaml`.
-
-@[wre](https://github.com/wrenoud) Thanks for your support on this sensor implementation
 
 ### Using the Combination Sensor with Senseair S8 & SHT-31 on the same board
 
-If you want to use this specific combination sensor, add the following to the bottom of the `open-air-mini.yaml` file.
+If you want to use this specific combination sensor, add the following to the bottom of the `open-air-valve.yaml` file.
 
 ```yaml
 sensor:

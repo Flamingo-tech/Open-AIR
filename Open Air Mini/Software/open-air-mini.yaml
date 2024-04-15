@@ -84,7 +84,7 @@ i2c:
   scan: false
   frequency: 400kHz
 
-#For version <1.4.0 use: (remove the #)
+#For version <1.4.0 use: (remove the # and remove above sensor pins)
 #uart:
 #UART For Sensor 2
  #- rx_pin: GPIO13
