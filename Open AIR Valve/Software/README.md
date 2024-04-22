@@ -75,6 +75,7 @@ If you want to add a SCD-40 moisture & Temperature sensor & Co2 sensor to the Op
 sensor:
   - platform: scd4x
     i2c_id: i2c_sensor_1 
+    co2:
       name: "Open AIR Valve x CO2"
       id: air_Co2
       accuracy_decimals: 0
@@ -122,6 +123,7 @@ If you want to add a SGP-41 VOC & NOx to the Open AIR Mini, add the following co
 sensor:
   - platform: scd4x
     i2c_id: i2c_sensor_1 
+    co2:
       name: "Open AIR Mini Sensor Valve x CO2"
       id: air_Co2
       accuracy_decimals: 0
