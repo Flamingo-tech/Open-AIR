@@ -8,12 +8,14 @@
  This will silence your Ducobox a bit. I tested with a calibrated Mini DSP microphone and captured the before and after installation.
  
  This is at maximum speed (before foam):
- ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Foam/test%20WITHOUT%20Foam.jpg) 
- 
+ <p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Foam/test%20WITHOUT%20Foam.jpg"/>
+</p>
  And then with foam installed:
- ![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Foam/Test%20WITH%20Foam.jpg) 
- 
- 
+ <p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Foam/Test%20WITH%20Foam.jpg"/>
+</p>
+
  This foam has the following dimensions:
  
  Length: 15CM\
