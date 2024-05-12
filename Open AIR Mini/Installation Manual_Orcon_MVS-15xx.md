@@ -34,7 +34,10 @@ Please be aware that this project operates independently and does not have suppo
 
 The location of your ventilation box can vary within your home. We encourage you to locate it. As a homeowner, this task should be straightforward and can be quite an enlightening step in familiarizing yourself further with your home's infrastructure. ;)
 Please remove the white cover. You will be greated with:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/1_Orcon.jpg?raw=true)
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Mini/Pictures/1_Orcon.jpg"/>
+</p>
+
 The cover may prove challenging to detach as it is secured by four semi-circular white components (on the sides of the box). I managed to wedge a screwdriver beneath these parts. This action revealed the inner workings of Orcon ventilation box.
 
 # 2 Remove Power
@@ -47,20 +50,28 @@ If you're unsure about any aspect of these steps or find them confusing, don't h
 
 Proceed to detach the cables from the original Orcon hardware:
 For the two big connectors you need to pinch the white tab. For the smaller four pin connector, just pull.
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/2_Orcon.jpg?raw=true)
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Mini/Pictures/2_Orcon.jpg"/>
+</p>
 
 
 # 3. Remove Original Hardware
 
 Push the two tabs on the side, and pull the board up. It should lift right up.
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/3_Orcon.jpg?raw=true)
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Mini/Pictures/3_Orcon.jpg"/>
+</p>
+
 
 Be sure to safely store the original circuit board after removal. If you ever decide to sell or rent your house in the future, you'll have the option to reinstall the original Orcon hardware. Its availability will provide flexibility for future circumstances.
 
 # 4. Insert Open AIR Mini
 
 For the installation of the Open AIR Mini, position it as follows:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/4_Orcon.jpg?raw=true)
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Mini/Pictures/4_Orcon.jpg"/>
+</p>
+
 Gently pull the tabs to the side again and slide the Open AIR Mini in place.
 
 # 5. Connect your Open AIR Mini
@@ -68,7 +79,10 @@ Gently pull the tabs to the side again and slide the Open AIR Mini in place.
 To provide power to your Open Air Mini, you'll need to connect the power cable to the white connector labled "Power Input". 
 To provide power to your Orcon Motor, you'll need to connect the power cable to the white connector labled "Motor Output". 
 
-Please pay close attention to the sequence in which the cables need to be connected:![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/5_Orcon.jpg?raw=true)
+Please pay close attention to the sequence in which the cables need to be connected:
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Mini/Pictures/5_Orcon.jpg"/>
+</p>
 
 Once all the cables are connected, make it a point to give each of them a gentle pull. This is to doubly ensure that they are firmly and correctly connected, providing a secure foundation for optimal operation.
 
@@ -92,7 +106,10 @@ Use this password: "ChangeMe@123!"
 Once you've successfully connected to the fallback hotspot using your phone or laptop, opening your browser should direct you to a landing page where you can establish your own network.
 If you don't automatically land on this page, you can manually navigate to it by entering the following URL: http://192.168.4.1 in the browser and navigate to it.
 Upon reaching this page, you should be greeted with a screen that resembles the following:
-![image.png](https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20Air%20Mini/Pictures/13.png?raw=true)
+<p align="center">
+  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Mini/Pictures/13.jpg"/>
+</p>
+
 Next, select your network and input your credentials. After this step, the device will undergo a reboot process, which may take approximately 4-5 minutes. Once completed, you should be able to see your Home Assistant (HA) environment directly, ensuring a smooth setup process.
 
 Should you encounter any difficulties and the process fails for some reason, you have the option to manually reset the device using the reset button. If the fallback hotspot reappears, this suggests that the Open AIR Mini was unable to establish a connection with your network. In such a case, please attempt the process again.
