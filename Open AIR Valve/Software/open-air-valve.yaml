@@ -170,10 +170,10 @@ cover:
 stepper:
   - platform: uln2003
     id: my_stepper
-    pin_a: GPIO12
-    pin_b: GPIO13
-    pin_c: GPIO14
-    pin_d: GPIO15
+    pin_a: GPIO15
+    pin_b: GPIO14
+    pin_c: GPIO13
+    pin_d: GPIO12
     max_speed: 350 steps/s
     acceleration: inf
     deceleration: inf
