@@ -143,7 +143,7 @@ Once you've successfully connected to the fallback hotspot using your phone or l
 If you don't automatically land on this page, you can manually navigate to it by entering the following URL: http://192.168.4.1 in the browser and navigate to it.
 Upon reaching this page, you should be greeted with a screen that resembles the following:
 <p align="center">
-  <img src="https://github.com/Flamingo-tech/Open-AIR/blob/main/Open%20AIR%20Mini/Pictures/13.jpg"/>
+  <img src="https://github.com/Flamingo-tech/Open-AIR/raw/main/Open%20AIR%20Mini/Pictures/13.png"/>
 </p>
 
 Next, select your network and input your credentials. After this step, the device will undergo a reboot process, which may take approximately 4-5 minutes. Once completed, you should be able to see your Home Assistant (HA) environment directly, ensuring a smooth setup process.
