@@ -1,0 +1,7 @@
+---
+  - id: disconnected_mode
+    mode: single
+    then:
+      - logger.log:
+          format: "Disconnected Mode Triggered"
+      - cover.open: valve

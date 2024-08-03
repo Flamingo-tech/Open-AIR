@@ -1,9 +1,0 @@
----
-- id: disconnected_mode
-  mode: single
-  then:
-    - logger.log: "Disconnected Mode Triggered"
-    - fan.turn_on: 
-        id: fan_motor
-        speed: !lambda |-
-          return id(disconnected_default_fan_speed);
