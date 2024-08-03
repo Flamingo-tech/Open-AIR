@@ -136,6 +136,7 @@ sensor:
     pin: GPIO14
     unit_of_measurement: 'RPM'
     name: 'AIR Mini RPM'
+    id: open_air_mini_rpm
 
   - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
     name: "WiFi Signal dB"
