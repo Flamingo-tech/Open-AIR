@@ -1,0 +1,22 @@
+Altium Designer Pick and Place Locations
+C:\Users\Public\Documents\Altium\OPEN_AIR_VALVE_HALL_SENSOR\Project Outputs for OPEN_AIR_VALVE_HALL_SENSOR\Pick Place for PCB2.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       17/08/24
+Time:       12:26
+Revision:   a414e4aece3b74d9ecbe1c094b1e0ccce2485f2b
+Variant:    No variations
+Units used: mm
+
+Designator Comment            Layer       Footprint             Center-X(mm) Center-Y(mm) Rotation Description                                                                                       
+R2         ERJ-S060R00V       TopLayer    SMD-0805-RES          6.2500       9.5000       90       "RES ,SMT, 0O, 1%, 125mW, 100ppm/°C  0805"                                                        
+R1         ERJ-S060R00V       TopLayer    SMD-0805-RES          6.2500       7.0000       90       "RES ,SMT, 0O, 1%, 125mW, 100ppm/°C  0805"                                                        
+D2         ESD9X5.0ST5G       TopLayer    SOD-923               5.2500       11.2500      90       "Trans Voltage Suppressor Diode, 107W, 5V V(RWM), Unidirectional, 1 Element, Silicon"             
+D1         ESD9X5.0ST5G       TopLayer    SOD-923               5.2500       5.2500       270      "Trans Voltage Suppressor Diode, 107W, 5V V(RWM), Unidirectional, 1 Element, Silicon"             
+C3         CL31B106KAHNFNE    TopLayer    SMD-1206-CAP          9.0001       7.0001       0        "CAP MLCC 1206 10uF 10uF 25V X7R 1206"                                                            
+C2         GCM155R71H104KE02J TopLayer    SMD-0402-CAP          6.7500       10.7500      270      "CAP CER SMT 100nF 10% 50VDC X7R 0402"                                                            
+C1         C0402C104K3RACTU   TopLayer    SMD-0402-CAP          12.2500      7.5000       0        "CAP MLCC 0402 100nF 10% 25V X7R 0402"                                                            
+X1         B3B-XH-A(LF)(SN)   BottomLayer FP-B3B-XH-A_LF_SN-MFG 3.3460       7.0800       90       "Connector Header, XH Series, 3 Position, 2.50mm, Through Hole, Press-Fit, Solder, Natural"       
+U1         DRV5032FBDBZR      TopLayer    SOT23-3               14.8860      7.0000       270      "Hall Effect Sensor, 0.5mT Min, 4.8mT Max, -5.0-5.0mA, Plastic/epoxy, Rectangular, Surface Mount" 
