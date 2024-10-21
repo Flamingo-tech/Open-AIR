@@ -74,7 +74,8 @@ api:
           target: !lambda 'return target;'
 
 ota:
-  password: "9f2ab9aa715f573e2476e75a5ec7f4e7"
+  - platform: esphome
+    password: "9f2ab9aa715f573e2476e75a5ec7f4e7"
 
 wifi:
   ssid: !secret wifi_ssid
