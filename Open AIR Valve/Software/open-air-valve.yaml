@@ -74,7 +74,8 @@ api:
           target: !lambda 'return target;'
 
 ota:
-  password: "9f2ab9aa715f573e2476e75a5ec7f4e7"
+  - platform: esphome
+    password: "9f2ab9aa715f573e2476e75a5ec7f4e7"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -180,7 +181,7 @@ stepper:
     sleep_when_done: true
 
 sensor:
-    - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
+  - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
     name: "WiFi Signal dB"
     id: wifi_signal_db
     update_interval: 60s
