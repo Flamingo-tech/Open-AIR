@@ -35,6 +35,7 @@ The Open AIR Mini works with the following ventilation boxes:
  - DucoBox Silent Standard
  - DucoBox Silent Perilex
  - DucoBox Silent Connect
+ - DucoBox Reno Non Perilex and Perilex
  - DucoBox Focus (Warning: Original Duco Valves are not supported!)
  - Orcon MVS-15xx
  - and more (see schematic below)
