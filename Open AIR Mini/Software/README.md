@@ -53,7 +53,7 @@ The following sensors are supported right away, either via ESPHome or via a cust
 
 ### New Sensors:
 All Open AIR Minis are now shipped with these sensors:
-1. [SHT-20](#sensor-support-SHT-20)
+1. [SHT-4x](#sensor-support-SHT-4x)
 1. [SCD-40](#sensor-support-SCD-4X)
 1. [SGP-41](#sensor-support-SGP-41)
 1. [SCD-40 & SGP-41 Combination Sensor](#SCD-40-&-SGP-41-Combination-Sensor)
@@ -62,22 +62,17 @@ All Open AIR Minis are now shipped with these sensors:
 1. [SHT-31](#sensor-support-sht-31)
 1. [Senseair S8](#sensor-support-senseair-s8)
 1. [SHT-31 & Senseair S8 Combination Sensor](#Using-the-Combination-Sensor-with-Senseair-S8-&-SHT-31-on-the-same-board)
+1. [SHT-20](#sensor-support-SHT-20)
 
 
 ## New:
 
-### Sensor Support: SHT-20
+### Sensor Support: SHT-4X
 
-If you have a SHT-20 Sensor add the following code at the bottom of `open-air-mini.yaml` 
-
-```yaml
-external_components:
-  - source: github://dmaasland/esphome@sht2x
-    components: [ sht2x ]
-```
+If you have a SHT-4X Sensor add the following code at the bottom of `open-air-mini.yaml` 
 
 ```yaml
-  - platform: sht2x
+  - platform: sht4x
     i2c_id: i2c_sensor_1
     temperature:
       name: "Open AIR Mini x Temperature"
@@ -89,7 +84,6 @@ external_components:
       accuracy_decimals: 2
     update_interval: 30s
 ```
-Thanks @dmaasland : https://github.com/dmaasland/esphome/tree/sht2x/esphome/components/sht2x
 
 ### Sensor Support: SCD-4X
 
@@ -200,7 +194,30 @@ sensor:
     address: 0x44
     update_interval: 60s
 ```
+### Sensor Support: SHT-20
 
+If you have a SHT-20 Sensor add the following code at the bottom of `open-air-mini.yaml` 
+
+```yaml
+external_components:
+  - source: github://dmaasland/esphome@sht2x
+    components: [ sht2x ]
+```
+
+```yaml
+  - platform: sht2x
+    i2c_id: i2c_sensor_1
+    temperature:
+      name: "Open AIR Mini x Temperature"
+      id: air_temperature
+      accuracy_decimals: 2
+    humidity:
+      name: "Open AIR Mini x Humidity"
+      id: air_humidity
+      accuracy_decimals: 2
+    update_interval: 30s
+```
+Thanks @dmaasland : https://github.com/dmaasland/esphome/tree/sht2x/esphome/components/sht2x
 
 ### Sensor Support: Senseair S8
 
