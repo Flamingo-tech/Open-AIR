@@ -72,6 +72,7 @@ All Open AIR Minis are now shipped with these sensors:
 If you have a SHT-4X Sensor add the following code at the bottom of `open-air-mini.yaml` 
 
 ```yaml
+sensor:
   - platform: sht4x
     i2c_id: i2c_sensor_1
     temperature:
