@@ -1,0 +1,305 @@
+## Written for Esphome version: 2025.9.1 
+substitutions:
+  # --- per-device names ---
+  devicename: open-air-valve-1          # Lowercase, no spaces
+  upper_devicename: Open AIR Valve 1    # UI Name
+
+esphome:
+  name: ${devicename}
+  name_add_mac_suffix: true
+  on_boot:
+    - priority: 700
+      then:
+        # Instant accel/decel as before
+        - stepper.set_acceleration:
+            id: my_stepper
+            acceleration: inf
+        - stepper.set_deceleration:
+            id: my_stepper
+            deceleration: inf
+
+        # Start from known 0 and move to 10% (index 10 in LUT)
+        - stepper.report_position:
+            id: my_stepper
+            position: 0
+        - stepper.set_target:
+            id: my_stepper
+            target: !lambda 'return id(valve_capacity_lookup_table)[10];'
+        - wait_until:
+            condition:
+              lambda: |-
+                return id(my_stepper).current_position == id(my_stepper).target_position;
+
+        - stepper.set_speed:
+            id: my_stepper
+            speed: 250 steps/s
+
+        # Home if needed (original sequence preserved)
+        - if:
+            condition:
+              binary_sensor.is_off: valve_homing_switch
+            then:
+              - while:
+                  condition:
+                    binary_sensor.is_off: valve_homing_switch
+                  then:
+                    - stepper.report_position:
+                        id: my_stepper
+                        position: 0
+                    - stepper.set_target:
+                        id: my_stepper
+                        target: -1
+                    - wait_until:
+                        condition:
+                          lambda: |-
+                            return id(my_stepper).current_position <= id(my_stepper).target_position;
+
+        # Re-zero after homing; stop at 0
+        - stepper.report_position:
+            id: my_stepper
+            position: 0
+        - stepper.set_target:
+            id: my_stepper
+            target: 0
+        - stepper.set_speed:
+            id: my_stepper
+            speed: 250 steps/s
+
+        # Publish a coherent starting state (optimistic)
+        - lambda: |-
+            id(last_cmd_pos) = 0.0f;
+            id(air_valve).position = id(last_cmd_pos);
+            id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+            id(air_valve).publish_state();
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+logger:
+  level: DEBUG
+
+web_server:
+  port: 80
+
+script: !include disconnected-mode.yaml
+
+api:
+  encryption:
+    key: !secret api_encryption_key
+  on_client_disconnected:
+    - script.execute: disconnected_mode
+  services:
+    - service: control_stepper
+      variables:
+        target: int
+      then:
+        - lambda: |-
+            int s = target;
+            if (s < 0) s = 0;
+            if (s > 525) s = 525;
+            id(my_stepper).set_target(s);
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "${upper_devicename} Config AP"
+    password: !secret wifi_ap_password
+
+captive_portal:
+
+# ---------- GLOBALS ----------
+globals:
+  - id: valve_capacity_lookup_table
+    type: std::vector<int>
+    restore_value: no
+    initial_value: '{0,47,66,82,94,106,116,125,134,142,150,158,165,172,178,185,191,197,203,209,215,220,225,231,236,241,246,251,256,261,265,270,275,279,284,288,292,297,301,305,309,314,318,322,326,330,334,338,342,346,350,353,357,361,365,368,372,376,380,383,387,391,394,398,401,405,409,412,416,419,423,426,430,433,437,440,443,447,450,454,457,461,464,467,471,474,478,481,484,488,491,494,498,501,504,508,511,514,518,521,525}'
+  # Remember last commanded valve position (0.0..1.0), restored on boot
+  - id: last_cmd_pos
+    type: float
+    restore_value: yes
+    initial_value: '0.0'
+
+# ---------- VALVE ENTITY ----------
+valve:
+  - platform: template
+    id: air_valve
+    name: "${upper_devicename} Valve"
+    has_position: true
+
+    # IMPORTANT: no lambda here — prevents auto-forcing 0%/100%
+
+    open_action:
+      - lambda: |-
+          id(my_stepper).set_target(525);
+          id(last_cmd_pos) = 1.0f;
+          id(air_valve).position = 1.0f;
+          id(air_valve).current_operation = VALVE_OPERATION_OPENING;
+          id(air_valve).publish_state();
+
+    close_action:
+      - lambda: |-
+          id(my_stepper).set_target(0);
+          id(last_cmd_pos) = 0.0f;
+          id(air_valve).position = 0.0f;
+          id(air_valve).current_operation = VALVE_OPERATION_CLOSING;
+          id(air_valve).publish_state();
+
+    position_action:
+      - lambda: |-
+          // pos is 0.0..1.0
+          float pct = pos * 100.0f;
+          if (pct <= 0.0f) {
+            id(my_stepper).set_target(0);
+            id(last_cmd_pos) = 0.0f;
+            id(air_valve).position = 0.0f;
+            id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+            id(air_valve).publish_state();
+            return;
+          }
+          if (pct >= 100.0f) {
+            id(my_stepper).set_target(525);
+            id(last_cmd_pos) = 1.0f;
+            id(air_valve).position = 1.0f;
+            id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+            id(air_valve).publish_state();
+            return;
+          }
+
+          int i = (int) roundf(pct);
+          if (i < 0) i = 0;
+          if (i > 100) i = 100;
+
+          int steps = id(valve_capacity_lookup_table)[i];
+          if (steps < 0) steps = 0;
+          if (steps > 525) steps = 525;
+
+          id(my_stepper).set_target(steps);
+
+          // Optimistic reporting: remember & publish exactly what we asked for
+          id(last_cmd_pos) = pos;
+          id(air_valve).position = pos;
+          id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+          id(air_valve).publish_state();
+
+# Periodic republish to keep HA in sync (does NOT recompute position)
+interval:
+  - interval: 60s
+    then:
+      - lambda: |-
+          id(air_valve).position = id(last_cmd_pos);
+          id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+          id(air_valve).publish_state();
+
+status_led:
+  pin:
+    number: GPIO33
+
+uart:
+  - id: uart_sensor_1
+    rx_pin: GPIO25
+    tx_pin: GPIO26
+    baud_rate: 9600
+
+i2c:
+  - id: i2c_sensor_1
+    sda: GPIO16
+    scl: GPIO4
+    scan: false
+    frequency: 400kHz
+
+# ---------- STEPPER ----------
+stepper:
+  - platform: uln2003
+    id: my_stepper
+    pin_a: GPIO12
+    pin_b: GPIO13
+    pin_c: GPIO14
+    pin_d: GPIO15
+    max_speed: 250 steps/s
+    acceleration: inf
+    deceleration: inf
+    sleep_when_done: true 
+
+# ---------- ENDSTOP / HOMING SWITCH ----------
+binary_sensor:
+  - platform: gpio
+    id: valve_homing_switch
+    name: "${upper_devicename} Closed Switch"
+    pin:
+      number: GPIO35
+      mode:
+        input: true
+      inverted: true
+
+# ---------- COMMANDS ----------
+switch:
+  - platform: restart
+    name: "Reboot ${upper_devicename} Controller"
+
+button:
+  - platform: template
+    name: "Re-home ${upper_devicename}"
+    on_press:
+      then:
+        - stepper.set_speed:
+            id: my_stepper
+            speed: 250 steps/s
+        - if:
+            condition:
+              binary_sensor.is_off: valve_homing_switch
+            then:
+              - while:
+                  condition:
+                    binary_sensor.is_off: valve_homing_switch
+                  then:
+                    - stepper.set_target:
+                        id: my_stepper
+                        target: -100000
+                    - delay: 10ms
+        - stepper.report_position:
+            id: my_stepper
+            position: 0
+        - stepper.set_target:
+            id: my_stepper
+            target: 0
+        - lambda: |-
+            // After manual re-home, reflect the new starting state
+            id(last_cmd_pos) = 0.0f;
+            id(air_valve).position = id(last_cmd_pos);
+            id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+            id(air_valve).publish_state();
+
+# ---------- SENSORS ----------
+sensor:
+  - platform: copy
+    source_id: wifi_signal_db
+    name: "${upper_devicename} WiFi Signal Percent"
+    filters:
+      - lambda: |-
+          // Map -100..-50 dBm -> 0..100%
+          if (x <= -100.0f) return 0.0f;
+          if (x >= -50.0f)  return 100.0f;
+          return 2.0f * (x + 100.0f);
+    unit_of_measurement: "%"
+    entity_category: diagnostic
+    device_class: ""
+
+  - platform: uptime
+    name: "${upper_devicename} Uptime"
+
+  - platform: internal_temperature
+    name: "${upper_devicename} MCU Temperature"
+
+text_sensor:
+  - platform: version
+    name: "${upper_devicename} Firmware Version"
+  - platform: wifi_info
+    ip_address:
+      name: "${upper_devicename} WiFi IP"
