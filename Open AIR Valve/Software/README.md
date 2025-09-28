@@ -54,11 +54,11 @@ external_components:
   - platform: sht2x
     i2c_id: i2c_sensor_1
     temperature:
-      name: "Open AIR Valve x Temperature"
+      name: "${upper_devicename} Temperature"
       id: air_temperature
       accuracy_decimals: 2
     humidity:
-      name: "Open AIR Valve x Humidity"
+      name: "${upper_devicename} Humidity"
       id: air_humidity
       accuracy_decimals: 2
     update_interval: 30s
@@ -76,15 +76,15 @@ sensor:
   - platform: scd4x
     i2c_id: i2c_sensor_1 
     co2:
-      name: "Open AIR Valve x CO2"
+      name: "${upper_devicename} CO2"
       id: air_Co2
       accuracy_decimals: 0
     temperature:
-      name: " Open AIR Valve x Temperature"
+      name: " ${upper_devicename} Temperature"
       id: air_temperature
       accuracy_decimals: 2
     humidity:
-      name: " Open AIR Valve x Humidity"
+      name: " ${upper_devicename} Humidity"
       id: air_humidity
       accuracy_decimals: 2
     update_interval: 30s
@@ -102,10 +102,10 @@ sensor:
   - platform: sgp4x
     i2c_id: i2c_sensor_1 
     voc:
-      name: "VOC Index Valve x"
+      name: "${upper_devicename} VOC Index"
       id: air_VOC
     nox:
-      name: "NOx Index Valve x"
+      name: "${upper_devicename} NOx Index"
       id: air_NOx
     compensation:
       temperature_source: air_temperature #Make sure to match these if you change ID's.
@@ -124,15 +124,15 @@ sensor:
   - platform: scd4x
     i2c_id: i2c_sensor_1 
     co2:
-      name: "Open AIR Mini Sensor Valve x CO2"
+      name: "${upper_devicename} CO2"
       id: air_Co2
       accuracy_decimals: 0
     temperature:
-      name: "Open AIR Mini Sensor Valve x Temperature"
+      name: "${upper_devicename} Temperature"
       id: air_temperature
       accuracy_decimals: 2
     humidity:
-      name: "Open AIR Mini Sensor Valve x Humidity"
+      name: "${upper_devicename} Humidity"
       id: air_humidity
       accuracy_decimals: 2
     update_interval: 30s
@@ -141,10 +141,10 @@ sensor:
   - platform: sgp4x
     i2c_id: i2c_sensor_1 
     voc:
-      name: "Valve x VOC Index "
+      name: "${upper_devicename} VOC Index"
       id: air_VOC
     nox:
-      name: "Valve x NOx Index "
+      name: "${upper_devicename} NOx Index"
       id: air_NOx
     compensation:
       temperature_source: air_temperature #Make sure to match these if you change ID's.
@@ -166,10 +166,10 @@ sensor:
   - platform: sht3xd
     i2c_id: i2c_sensor_1
     temperature:
-      name: "Temperature Open AIR Valve x"
+      name: "${upper_devicename} Temperature"
       id: air_temperature
     humidity:
-      name: "Humidity Open AIR Valve x"
+      name: "${upper_devicename} Humidity"
       id: air_humdity
     address: 0x44
     update_interval: 60s
@@ -187,7 +187,7 @@ sensor:
   - platform: senseair
     uart_id: uart_sensor_1
     co2:
-      name: "CO2 Open AIR Valve x"
+      name: "${upper_devicename} CO2"
     update_interval: 60s
 ```
 
@@ -202,17 +202,17 @@ sensor:
   - platform: sht3xd
     i2c_id: i2c_sensor_1
     temperature:
-      name: "Temperature Open AIR Valve x"
+      name: "${upper_devicename} Temperature"
       id: air_temperature
     humidity:
-      name: "Humidity Open AIR Valve x"
+      name: "${upper_devicename} Humidity"
       id: air_humidity
     address: 0x44
     update_interval: 60s
   - platform: senseair
     uart_id: uart_sensor_1
     co2:
-      name: "CO2 Open AIR Valve x"
+      name: "${upper_devicename} CO2"
       id: air_co2
     update_interval: 60s
 ```
