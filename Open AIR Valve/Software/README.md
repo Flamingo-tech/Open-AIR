@@ -8,7 +8,7 @@ Change the "X" in `open-air-valve.yaml` with a number or a letter. This will hel
 
 ## Hall Sensor Homing
 
-Since version V1.4.0 of the Open AIR Valve , the Omron Switch is changed for a more reliable mechanism: A hall sensor.
+Since hardware version V1.4.0 of the Open AIR Valve , the Omron Switch is changed for a more reliable mechanism: A hall sensor.
 The signal of the sensor is inverted! so a small change to your YAML file is needed if you upgrade.
 
 ```yaml
