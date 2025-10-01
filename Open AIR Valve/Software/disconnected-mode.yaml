@@ -1,7 +1,12 @@
----
-  - id: disconnected_mode
-    mode: single
-    then:
-      - logger.log:
-          format: "Disconnected Mode Triggered"
-      - cover.open: valve
+- id: disconnected_mode
+  mode: single
+  then:
+    - logger.log:
+        format: "Disconnected Mode Triggered"
+    - lambda: |-
+        // Move to 100% and publish optimistic state
+        id(my_stepper).set_target(525);
+        id(last_cmd_pos) = 1.0f;
+        id(air_valve).position = 1.0f;
+        id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+        id(air_valve).publish_state();

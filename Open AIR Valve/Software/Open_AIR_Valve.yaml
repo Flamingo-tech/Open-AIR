@@ -278,6 +278,16 @@ button:
 
 # ---------- SENSORS ----------
 sensor:
+ # 1) Actual WiFi RSSI in dBm (the missing source)
+  - platform: wifi_signal
+    id: wifi_signal_db
+    name: "${upper_devicename} WiFi RSSI"
+    update_interval: 60s
+    # Home Assistant expects dBm when device_class is signal_strength
+    unit_of_measurement: "dBm"
+    device_class: signal_strength
+
+  # 2) Derived percentage from the RSSI above
   - platform: copy
     source_id: wifi_signal_db
     name: "${upper_devicename} WiFi Signal Percent"
@@ -289,7 +299,7 @@ sensor:
           return 2.0f * (x + 100.0f);
     unit_of_measurement: "%"
     entity_category: diagnostic
-    device_class: ""
+    device_class: ""   # leave blank for percentage
 
   - platform: uptime
     name: "${upper_devicename} Uptime"
