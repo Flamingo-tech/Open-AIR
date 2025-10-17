@@ -155,6 +155,8 @@ It's worth noting that if you're utilizing a hidden SSID you cant use the pre-pr
 
 Upon successful completion of these steps, your Home Assistant should generate a "New Devices Discovered" notification. To proceed, click on the "Check it Out" option, then select the "Configure" button on the new ESPHome device. A pop-up window should appear next; hit the "Submit" button.
 
+If HA asks for an encryption key use:"YCZELYrS1Di6tDmWNDSFRVaXJEYG9RxAldRHNPXXt3o="
+
 Congratulations, you're all set! You can now begin creating custom automations for your device. Enjoy exploring the possibilities this brings to your home environment.
 
 **After adding the Open AIR Mini to a dashboard long press the fan logo and then you can change the RPM**
