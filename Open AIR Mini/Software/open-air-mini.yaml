@@ -154,6 +154,24 @@ sensor:
     entity_category: "diagnostic"
     device_class: ""
 
+  - platform: uptime
+    name: "Uptime"
+    entity_category: diagnostic
+
+  - platform: internal_temperature
+    name: "MCU Temperature"
+    entity_category: diagnostic
+
+text_sensor:
+  - platform: version
+    name: "Firmware Version"
+    entity_category: diagnostic
+
+  - platform: wifi_info
+    ip_address:
+      name: "WiFi IP"
+      entity_category: diagnostic
+
 script:
   # Below includes for disconnected mode are mutually exclusive. Only use one at a time!
   !include disconnected-mode-without-humidity.yaml
