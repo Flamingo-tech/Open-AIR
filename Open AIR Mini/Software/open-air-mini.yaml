@@ -1,7 +1,10 @@
 esphome:
   name: open-air-mini
-  platform: ESP32
+
+esp32:
   board: esp32dev
+  framework:
+    type: arduino
 
 # Enable logging
 logger:
@@ -15,7 +18,8 @@ web_server:
 api:
 
 ota:
-  password: "9f2ab9aa715f573e2476e75a5ec7f4e7"
+  - platform: esphome
+    password: "9f2ab9aa715f573e2476e75a5ec7f4e7"
 
 wifi:
   ssid: !secret wifi_ssid
