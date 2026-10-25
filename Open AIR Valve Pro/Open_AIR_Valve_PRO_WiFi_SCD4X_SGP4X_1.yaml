@@ -1,0 +1,664 @@
+## Written for Esphome version: 2025.9.1
+substitutions:
+  devicename: open-air-valve-pro-1
+  upper_devicename: Open AIR Valve Pro 1
+
+esphome:
+  name: ${devicename}
+  name_add_mac_suffix: true
+  on_boot:
+    - priority: 700
+      then:
+        # Sync slider UI to stored value
+        - lambda: |-
+            id(maintenance_period_hours).publish_state(id(maintenance_period_hours_store));
+
+            id(homing_in_progress) = true;
+            id(homing_failed) = false;
+
+        - stepper.set_speed:
+            id: my_stepper
+            speed: 200 steps/s
+        - stepper.set_acceleration:
+            id: my_stepper
+            acceleration: 300 steps/s^2
+        - stepper.set_deceleration:
+            id: my_stepper
+            deceleration: 300 steps/s^2
+
+        # Small visible move (~5%)
+        - stepper.report_position:
+            id: my_stepper
+            position: 0
+        - lambda: |-
+            int steps_demo = id(valve_capacity_lookup_table)[5];
+            if (steps_demo < 0) steps_demo = 0;
+            if (steps_demo > 1575) steps_demo = 1575;
+            id(my_stepper).set_target(steps_demo);
+
+            // show motion correctly
+            id(air_valve).position = 0.05f;
+            id(air_valve).current_operation = VALVE_OPERATION_OPENING;
+            id(air_valve).publish_state();
+        - wait_until:
+            condition:
+              lambda: 'return abs(id(my_stepper).current_position - id(my_stepper).target_position) <= 1;'
+            timeout: 5s
+        - lambda: |-
+            id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+            id(air_valve).publish_state();
+
+        # Home only if not already on the switch
+        - if:
+            condition:
+              binary_sensor.is_off: valve_homing_switch
+            then:
+              - lambda: |-
+                  // homing move is towards "closed"
+                  id(air_valve).current_operation = VALVE_OPERATION_CLOSING;
+                  id(air_valve).publish_state();
+              - stepper.set_target:
+                  id: my_stepper
+                  target: -100000
+              - wait_until:
+                  condition:
+                    binary_sensor.is_on: valve_homing_switch
+                  timeout: 15s
+              # If still not on switch => fail and STOP (no mis-zero)
+              - if:
+                  condition:
+                    binary_sensor.is_off: valve_homing_switch
+                  then:
+                    - logger.log:
+                        level: ERROR
+                        format: "Boot homing timeout: switch not reached (no zeroing performed)"
+                    - lambda: |-
+                        id(homing_failed) = true;
+                        id(my_stepper).set_target(id(my_stepper).current_position);
+                        id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+                        id(air_valve).publish_state();
+
+        # If homing succeeded: zero and go to last_cmd_pos, publish
+        - if:
+            condition:
+              lambda: 'return !id(homing_failed);'
+            then:
+              - stepper.report_position:
+                  id: my_stepper
+                  position: 0
+              - stepper.set_target:
+                  id: my_stepper
+                  target: 0
+
+              - lambda: |-
+                  float pos = id(last_cmd_pos);
+                  if (pos < 0.0f) pos = 0.0f;
+                  if (pos > 1.0f) pos = 1.0f;
+
+                  int i = (int) lroundf(pos * 100.0f);
+                  if (i < 0) i = 0;
+                  if (i > 100) i = 100;
+
+                  int steps = id(valve_capacity_lookup_table)[i];
+                  if (steps < 0) steps = 0;
+                  if (steps > 1575) steps = 1575;
+
+                  int cur = id(my_stepper).current_position;
+                  if (steps > cur) id(air_valve).current_operation = VALVE_OPERATION_OPENING;
+                  else if (steps < cur) id(air_valve).current_operation = VALVE_OPERATION_CLOSING;
+                  else id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+
+                  id(my_stepper).set_target(steps);
+
+                  id(air_valve).position = pos;
+                  id(air_valve).publish_state();
+
+              - wait_until:
+                  condition:
+                    lambda: 'return abs(id(my_stepper).current_position - id(my_stepper).target_position) <= 1;'
+                  timeout: 30s
+
+              - lambda: |-
+                  id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+                  id(air_valve).publish_state();
+
+            else:
+              - lambda: |-
+                  // If homing failed, publish last_cmd_pos but do not move further
+                  float pos = id(last_cmd_pos);
+                  if (pos < 0.0f) pos = 0.0f;
+                  if (pos > 1.0f) pos = 1.0f;
+                  id(air_valve).position = pos;
+                  id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+                  id(air_valve).publish_state();
+
+        - lambda: |-
+            id(homing_in_progress) = false;
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+logger:
+  level: DEBUG
+
+web_server:
+  port: 80
+
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "${upper_devicename} Config AP"
+    password: !secret wifi_ap_password
+
+captive_portal:
+
+time:
+  - platform: homeassistant
+    id: ha_time
+
+# ---------- GLOBALS ----------
+globals:
+  - id: valve_capacity_lookup_table
+    type: std::vector<int>
+    restore_value: no
+    initial_value: '{0,141,198,246,282,318,348,375,402,426,450,474,495,516,534,555,573,591,609,627,645,660,675,693,708,723,738,753,768,783,795,810,825,837,852,864,876,891,903,915,927,942,954,966,978,990,1002,1014,1026,1038,1050,1059,1071,1083,1095,1104,1116,1128,1140,1149,1161,1173,1182,1194,1203,1215,1227,1236,1248,1257,1269,1278,1290,1299,1311,1320,1329,1341,1350,1362,1371,1383,1392,1401,1413,1422,1434,1443,1452,1464,1473,1482,1494,1503,1512,1524,1533,1542,1554,1563,1575}'
+
+  - id: last_cmd_pos
+    type: float
+    restore_value: yes
+    initial_value: '0.0'
+
+  - id: homing_failed
+    type: bool
+    restore_value: no
+    initial_value: 'false'
+
+  - id: homing_in_progress
+    type: bool
+    restore_value: no
+    initial_value: 'false'
+
+  - id: last_rehome_ms
+    type: uint32_t
+    restore_value: yes
+    initial_value: '0'
+
+  - id: last_maintenance_rehome_epoch
+    type: int64_t
+    restore_value: yes
+    initial_value: '0'
+
+  - id: last_maintenance_reason
+    type: std::string
+    restore_value: no
+    initial_value: '"Never"'
+
+  # SINGLE source of truth for maintenance period (hours)
+  - id: maintenance_period_hours_store
+    type: float
+    restore_value: yes
+    initial_value: '24.0'
+
+# ---------- MAINTENANCE SETTINGS (Configuration tab) ----------
+switch:
+  - platform: template
+    id: maintenance_rehome_enable
+    name: "${upper_devicename} Maintenance Re-home Enabled"
+    icon: "mdi:autorenew"
+    entity_category: config
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_ON
+    on_turn_on:
+      - lambda: |-
+          id(last_rehome_ms) = millis();
+          id(last_maintenance_reason) = "Enabled: timer restarted";
+    on_turn_off:
+      - lambda: |-
+          id(last_maintenance_reason) = "Disabled by toggle";
+
+  - platform: restart
+    name: "Reboot ${upper_devicename} Controller"
+    entity_category: config
+
+number:
+  - platform: template
+    id: maintenance_period_hours
+    name: "${upper_devicename} Maintenance Period Hours"
+    unit_of_measurement: "h"
+    icon: "mdi:timer-cog"
+    entity_category: config
+    min_value: 1
+    max_value: 168
+    step: 1
+    optimistic: true
+    restore_value: false
+    initial_value: 24
+    set_action:
+      - lambda: |-
+          float v = x;
+          if (v < 1.0f) v = 1.0f;
+          if (v > 168.0f) v = 168.0f;
+
+          id(maintenance_period_hours_store) = v;
+          id(maintenance_period_hours).publish_state(v);
+
+          id(last_rehome_ms) = millis();
+
+          char buf[96];
+          snprintf(buf, sizeof(buf), "Period set: %.0f h (timer restarted)", v);
+          id(last_maintenance_reason) = std::string(buf);
+
+          ESP_LOGI("maintenance", "SET slider=%.3f stored=%.3f", x, id(maintenance_period_hours_store));
+
+# ---------- VALVE ----------
+status_led:
+  pin:
+    number: GPIO16
+
+i2c:
+#I2C For Sensor 1
+- id: i2c_sensor_1
+  sda: GPIO5
+  scl: GPIO4
+  scan: false
+  frequency: 400kHz
+
+valve:
+  - platform: template
+    id: air_valve
+    name: "${upper_devicename} Valve"
+    has_position: true
+
+    # HA semantics:
+    # - position==0   => Closed
+    # - position==1   => Open (fully open)
+    # - (0,1)         => Partially open
+    # - current_operation only indicates motion (opening/closing/idle)
+
+    open_action:
+      - lambda: |-
+          id(my_stepper).set_target(1575);
+          id(last_cmd_pos) = 1.0f;
+          id(air_valve).position = 1.0f;
+          id(air_valve).current_operation = VALVE_OPERATION_OPENING;
+          id(air_valve).publish_state();
+      - wait_until:
+          condition:
+            lambda: 'return abs(id(my_stepper).current_position - id(my_stepper).target_position) <= 1;'
+          timeout: 30s
+      - lambda: |-
+          id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+          id(air_valve).publish_state();
+
+    close_action:
+      - lambda: |-
+          id(my_stepper).set_target(0);
+          id(last_cmd_pos) = 0.0f;
+          id(air_valve).position = 0.0f;
+          id(air_valve).current_operation = VALVE_OPERATION_CLOSING;
+          id(air_valve).publish_state();
+      - wait_until:
+          condition:
+            lambda: 'return abs(id(my_stepper).current_position - id(my_stepper).target_position) <= 1;'
+          timeout: 30s
+      - lambda: |-
+          id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+          id(air_valve).publish_state();
+
+    position_action:
+      - lambda: |-
+          float p = pos;
+          if (p < 0.0f) p = 0.0f;
+          if (p > 1.0f) p = 1.0f;
+
+          int i = (int) lroundf(p * 100.0f);
+          if (i < 0) i = 0;
+          if (i > 100) i = 100;
+
+          int steps = id(valve_capacity_lookup_table)[i];
+          if (steps < 0) steps = 0;
+          if (steps > 1575) steps = 1575;
+
+          int cur = id(my_stepper).current_position;
+
+          if (steps > cur) {
+            id(air_valve).current_operation = VALVE_OPERATION_OPENING;
+          } else if (steps < cur) {
+            id(air_valve).current_operation = VALVE_OPERATION_CLOSING;
+          } else {
+            id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+          }
+
+          id(my_stepper).set_target(steps);
+
+          id(last_cmd_pos) = p;
+          id(air_valve).position = p;
+          id(air_valve).publish_state();
+      - wait_until:
+          condition:
+            lambda: 'return abs(id(my_stepper).current_position - id(my_stepper).target_position) <= 1;'
+          timeout: 30s
+      - lambda: |-
+          id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+          id(air_valve).publish_state();
+
+# ---------- MAINTENANCE TIMER ----------
+interval:
+  - interval: 60s
+    then:
+      # Maintenance scheduler (uses stored value)
+      - lambda: |-
+          if (id(homing_in_progress)) {
+            id(last_maintenance_reason) = "Skipped: homing_in_progress";
+            ESP_LOGD("maintenance", "Skip: homing_in_progress");
+            return;
+          }
+
+          if (!id(maintenance_rehome_enable).state) {
+            id(last_maintenance_reason) = "Disabled by toggle";
+            ESP_LOGD("maintenance", "Disabled by toggle");
+            return;
+          }
+
+          const float h = id(maintenance_period_hours_store);
+          const uint32_t period_ms = (uint32_t)(h * 3600000.0f);
+          const uint32_t now = millis();
+
+          if (id(last_rehome_ms) == 0) {
+            id(last_rehome_ms) = now;
+            id(last_maintenance_reason) = "Timer initialized";
+            ESP_LOGD("maintenance", "Timer initialized (period=%.2fh)", h);
+            return;
+          }
+
+          const uint32_t elapsed = (uint32_t)(now - id(last_rehome_ms));
+          const uint32_t remaining = (elapsed >= period_ms) ? 0 : (period_ms - elapsed);
+
+          ESP_LOGD("maintenance", "period=%.2fh stored=%.3f slider_state=%.3f elapsed=%us remaining=%us",
+                   h,
+                   id(maintenance_period_hours_store),
+                   id(maintenance_period_hours).state,
+                   (unsigned)(elapsed/1000),
+                   (unsigned)(remaining/1000));
+
+          if (elapsed < period_ms) {
+            id(last_maintenance_reason) = "Waiting: not due yet";
+            return;
+          }
+
+          id(last_rehome_ms) = now;
+          id(last_maintenance_rehome_epoch) = (int64_t) id(ha_time).now().timestamp;
+
+          id(last_maintenance_reason) = "Triggered: maintenance re-home";
+          ESP_LOGI("maintenance", "Maintenance re-home triggered (period=%.2fh)", h);
+
+          id(rehome_button).press();
+
+# ---------- STEPPER ----------
+stepper:
+  - platform: uln2003
+    id: my_stepper
+    pin_a: GPIO32
+    pin_b: GPIO33
+    pin_c: GPIO14
+    pin_d: GPIO12
+    max_speed: 150 steps/s
+    acceleration: 200
+    deceleration: 200
+    sleep_when_done: true
+
+# ---------- ENDSTOP / HOMING SWITCH & FLAGS ----------
+binary_sensor:
+  - platform: gpio
+    id: valve_homing_switch
+    name: "${upper_devicename} Closed Switch"
+    pin:
+      number: GPIO13
+      mode:
+        input: true
+      inverted: true
+
+  - platform: template
+    id: homing_failed_sensor
+    name: "${upper_devicename} Homing Failed"
+    lambda: |-
+      return id(homing_failed);
+    entity_category: diagnostic
+    icon: "mdi:alert-circle"
+
+  - platform: template
+    id: homing_in_progress_sensor
+    name: "${upper_devicename} Homing In Progress"
+    lambda: |-
+      return id(homing_in_progress);
+    entity_category: diagnostic
+    icon: "mdi:progress-wrench"
+
+# ---------- COMMANDS ----------
+button:
+  - platform: template
+    id: rehome_button
+    name: "Re-home ${upper_devicename}"
+    on_press:
+      then:
+        - lambda: |-
+            id(homing_in_progress) = true;
+            id(homing_failed) = false;
+
+        - stepper.set_speed:
+            id: my_stepper
+            speed: 150 steps/s
+        - stepper.set_acceleration:
+            id: my_stepper
+            acceleration: 200
+        - stepper.set_deceleration:
+            id: my_stepper
+            deceleration: 200
+
+        - if:
+            condition:
+              binary_sensor.is_off: valve_homing_switch
+            then:
+              - lambda: |-
+                  id(air_valve).current_operation = VALVE_OPERATION_CLOSING;
+                  id(air_valve).publish_state();
+              - stepper.set_target:
+                  id: my_stepper
+                  target: -100000
+              - wait_until:
+                  condition:
+                    binary_sensor.is_on: valve_homing_switch
+                  timeout: 15s
+              - if:
+                  condition:
+                    binary_sensor.is_off: valve_homing_switch
+                  then:
+                    - logger.log:
+                        level: ERROR
+                        format: "Manual re-home timeout: switch not reached (no zeroing performed)"
+                    - lambda: |-
+                        id(homing_failed) = true;
+                        id(my_stepper).set_target(id(my_stepper).current_position);
+                        id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+                        id(air_valve).publish_state();
+
+        - if:
+            condition:
+              lambda: 'return !id(homing_failed);'
+            then:
+              - stepper.report_position:
+                  id: my_stepper
+                  position: 0
+              - stepper.set_target:
+                  id: my_stepper
+                  target: 0
+              - lambda: |-
+                  float pos = id(last_cmd_pos);
+                  if (pos < 0.0f) pos = 0.0f;
+                  if (pos > 1.0f) pos = 1.0f;
+
+                  int i = (int) lroundf(pos * 100.0f);
+                  if (i < 0) i = 0;
+                  if (i > 100) i = 100;
+
+                  int steps = id(valve_capacity_lookup_table)[i];
+                  if (steps < 0) steps = 0;
+                  if (steps > 1575) steps = 1575;
+
+                  int cur = id(my_stepper).current_position;
+                  if (steps > cur) id(air_valve).current_operation = VALVE_OPERATION_OPENING;
+                  else if (steps < cur) id(air_valve).current_operation = VALVE_OPERATION_CLOSING;
+                  else id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+
+                  id(my_stepper).set_target(steps);
+
+                  id(air_valve).position = pos;
+                  id(air_valve).publish_state();
+
+              - wait_until:
+                  condition:
+                    lambda: 'return abs(id(my_stepper).current_position - id(my_stepper).target_position) <= 1;'
+                  timeout: 30s
+
+              - lambda: |-
+                  id(air_valve).current_operation = VALVE_OPERATION_IDLE;
+                  id(air_valve).publish_state();
+
+        - lambda: |-
+            id(homing_in_progress) = false;
+
+# ---------- SENSORS ----------
+sensor:
+  # WiFi RSSI
+  - platform: wifi_signal
+    id: wifi_signal_db
+    name: "${upper_devicename} WiFi RSSI"
+    update_interval: 60s
+    unit_of_measurement: "dBm"
+    device_class: signal_strength
+    entity_category: diagnostic
+
+  # Derived WiFi percentage
+  - platform: copy
+    source_id: wifi_signal_db
+    name: "${upper_devicename} WiFi Signal Percent"
+    filters:
+      - lambda: |-
+          if (x <= -100.0f) return 0.0f;
+          if (x >= -50.0f)  return 100.0f;
+          return 2.0f * (x + 100.0f);
+    unit_of_measurement: "%"
+    entity_category: diagnostic
+
+  - platform: uptime
+    name: "${upper_devicename} Uptime"
+    entity_category: diagnostic
+
+  - platform: internal_temperature
+    name: "${upper_devicename} MCU Temperature"
+    entity_category: diagnostic
+
+  - platform: scd4x
+    i2c_id: i2c_sensor_1
+    temperature_offset: 1
+    co2:
+      name: "${upper_devicename} CO2"
+      id: air_Co2
+      accuracy_decimals: 0
+    temperature:
+      name: "${upper_devicename} Temperature"
+      id: air_temperature
+      accuracy_decimals: 2
+    humidity:
+      name: "${upper_devicename} Humidity"
+      id: air_humidity
+      accuracy_decimals: 2
+    update_interval: 30s
+    measurement_mode: periodic
+
+  - platform: sgp4x
+    i2c_id: i2c_sensor_1
+    voc:
+      name: "${upper_devicename} VOC Index"
+      id: air_VOC
+    nox:
+      name: "${upper_devicename} NOx Index"
+      id: air_NOx
+    compensation:
+      temperature_source: air_temperature
+      humidity_source: air_humidity
+    update_interval: 30s
+
+  # Maintenance diagnostics (Diagnostic tab)
+  - platform: template
+    name: "${upper_devicename} Maintenance Period Effective"
+    entity_category: diagnostic
+    unit_of_measurement: "h"
+    icon: "mdi:timer-cog"
+    accuracy_decimals: 0
+    update_interval: 30s
+    lambda: |-
+      return id(maintenance_period_hours_store);
+
+  - platform: template
+    name: "${upper_devicename} Maintenance Re-home Due In"
+    entity_category: diagnostic
+    unit_of_measurement: "min"
+    icon: "mdi:timer-sand"
+    accuracy_decimals: 0
+    update_interval: 60s
+    lambda: |-
+      if (!id(maintenance_rehome_enable).state) return NAN;
+
+      const float h = id(maintenance_period_hours_store);
+      const uint32_t p = (uint32_t)(h * 3600000.0f);
+      const uint32_t n = millis();
+
+      if (id(last_rehome_ms) == 0) return (float)(p / 60000);
+
+      const uint32_t e = (uint32_t)(n - id(last_rehome_ms));
+      if (e >= p) return 0.0f;
+
+      return (float)((p - e) / 60000);
+
+text_sensor:
+  - platform: version
+    name: "${upper_devicename} Firmware Version"
+    entity_category: diagnostic
+
+  - platform: wifi_info
+    ip_address:
+      name: "${upper_devicename} WiFi IP"
+      entity_category: diagnostic
+
+  # Maintenance timestamp (Configuration tab)
+  - platform: template
+    name: "${upper_devicename} Last Maintenance Re-home"
+    entity_category: config
+    icon: "mdi:clock-check"
+    lambda: |-
+      if (id(last_maintenance_rehome_epoch) <= 0) return {"Never"};
+      time_t t = (time_t) id(last_maintenance_rehome_epoch);
+      struct tm *tm_info = localtime(&t);
+      char buf[32];
+      strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", tm_info);
+      return {buf};
+
+  # Maintenance status (Diagnostic tab)
+  - platform: template
+    name: "${upper_devicename} Maintenance Status"
+    entity_category: diagnostic
+    icon: "mdi:information-outline"
+    lambda: |-
+      return { id(last_maintenance_reason).c_str() };
